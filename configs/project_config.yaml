@@ -1,0 +1,20 @@
+# Location of libraries
+libraries:
+    model_library: LightningModules
+    artifact_library: lightning_checkpoints
+    
+
+# The lines you would like/need in a batch script before the call to pipeline.py
+custom_batch_setup:
+    - source $HOME/HSFPipeline/HSFEnv/bin/activate
+    
+# If you need to set up some environment before a batch is submitted, define it here in order of commands to run
+command_line_setup:
+    - module purge
+    - module load cgpu cuda/11.1.1 gcc openmpi python cudnn
+    
+# If you need to run jobs serially, set to true
+serial: False
+
+# Which logger to use - options are Weights & Biases [wandb], TensorBoard [tb], or [None]
+logger: tb

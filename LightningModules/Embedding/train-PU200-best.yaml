@@ -1,0 +1,43 @@
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV/TTbar_DiLep_output_PU200_npz/
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_best_Embed
+project: LRT_Embedding
+overwrite: true
+pt_signal_min: 0
+pt_background_min: 0
+train_split:
+- - 4000
+  - 2000
+  - 4000
+true_edges: layerless_true_edges
+noise: true
+in_channels: 3
+emb_hidden:
+- - 256
+  - 256
+  - 256
+  - 256
+nb_layer: 6
+emb_dim: 64
+weight: 1.7
+randomisation: 2
+batch_size: 1
+points_per_batch: 100000
+r_train: 0.28
+r_val: 0.28
+r_test: 0.28
+knn: 4
+warmup: 4
+margin: 0.36
+lr: 0.0003
+factor: 0.58
+patience: 10
+regime:
+- - rp
+  - hnm
+max_epochs: 20
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints
+callbacks:
+- EmbeddingPurEff
+- EmbeddingBuilder
+TAG: best_solution
+TAG: best

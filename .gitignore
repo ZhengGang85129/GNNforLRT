@@ -1,0 +1,11 @@
+__pycache__
+*.out
+*.log
+*.pdf
+*.png
+*.txt
+tmp*
+lightning_checkpoints/
+HyperOptim/Embedding/*
+HyperOptim/Filter/*
+HyperOptim/GNN/*
