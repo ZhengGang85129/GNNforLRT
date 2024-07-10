@@ -1,0 +1,88 @@
+checkpoints:
+  list: ["../../data/models/HSF/lightning_checkpoints"]
+
+gnn_arch:
+  list:
+    - "ResAGNN+ReLU"
+
+event:
+  files:
+    embedding_log:
+      file: "{checkpoints}/LRT_Embedding"
+      parser: tb.log
+
+    filter_log:
+      file: "{checkpoints}/LRT_Filter"
+      parser: tb.log
+
+    gnn_log:
+      file: "{checkpoints}/LRT_GNN/{gnn_arch}"
+      parser: tb.log
+
+  data:
+    embedding_train:
+      embedding_log:
+        loss:
+          tag: train_loss
+          processing:
+            # wall_time, step, value
+            - select: { column: 2 }
+
+    embedding_val:
+      embedding_log:
+        loss:
+          tag: val_loss
+          processing:
+            - select: { column: 2 }
+        purity:
+          tag: pur
+          processing:
+            - select: { column: 2 }
+        efficiency:
+          tag: eff
+          processing:
+            - select: { column: 2 }
+
+    filter_train:
+      filter_log:
+        loss:
+          tag: train_loss
+          processing:
+            - select: { column: 2 }
+
+    filter_val:
+      filter_log:
+        loss:
+          tag: val_loss
+          processing:
+            - select: { column: 2 }
+        purity:
+          tag: pur
+          processing:
+            - select: { column: 2 }
+        efficiency:
+          tag: eff
+          processing:
+            - select: { column: 2 }
+
+    gnn_train:
+      gnn_log:
+        loss:
+          tag: train_loss
+          processing:
+            - select: { column: 2 }
+
+    gnn_val:
+      gnn_log:
+        loss:
+          tag: val_loss
+          processing:
+            - select: { column: 2 }
+        purity:
+          tag: pur
+          processing:
+            - select: { column: 2 }
+        efficiency:
+          tag: eff
+          processing:
+            - select: { column: 2 }

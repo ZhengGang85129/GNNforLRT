@@ -1,7 +1,8 @@
 job_name: train_embedding
 constraint: gpu
 nodes: 1
-gpus: 1
+gpus: 2
+devices: 2
 time: "10:00:00"
 output: logs/%x-%j.out
 account: m3443

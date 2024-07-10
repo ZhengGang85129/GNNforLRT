@@ -10,9 +10,9 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 4000
+- - 2000
+  - 1000
   - 2000
-  - 4000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
@@ -33,12 +33,12 @@ factor: 0.3
 patience: 10
 regime:
 - []
-max_epochs: 25
+max_epochs: 20
+devices: 2
 slack_alert: false
 checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints
 callbacks:
 - GNNEffPur
 - GNNBuilder
 edgecut_cut: 0.301
-TAG: best_solution
 TAG: best

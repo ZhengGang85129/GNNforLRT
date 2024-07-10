@@ -1,0 +1,40 @@
+checkpoints:
+  list: ["/global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints"]
+
+version:
+  list:
+    - "version_0"
+#    - "ResAGNN+SiLU"
+#    - "InteractionGNN+ReLU"
+#    - "InteractionGNN+SiLU"
+#    - "VanillaGCN+ReLU"
+#    - "VanillaGCN+SiLU"
+
+event:
+  files:
+    embedding_log:
+      file: "{checkpoints}/LRT_Embed/{version}"
+      parser: tb.log
+
+  data:
+    embedding_train:
+      embedding_log:
+        loss:
+          tag: train_loss
+          processing:
+            - select: { column: 2 }
+
+    embedding_val:
+      embedding_log:
+        loss:
+          tag: val_loss
+          processing:
+            - select: { column: 2 }
+        purity:
+          tag: pur
+          processing:
+            - select: { column: 2 }
+        efficiency:
+          tag: eff
+          processing:
+            - select: { column: 2 }

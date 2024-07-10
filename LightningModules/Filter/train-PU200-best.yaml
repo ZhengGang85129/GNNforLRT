@@ -39,5 +39,5 @@ callbacks:
 - FilterInferenceCallback
 - FilterGetPurEff
 checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints
-devices: 1
+devices: 2
 TAG: best

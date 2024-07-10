@@ -1,19 +1,20 @@
 stage_list:
-- batch_config: configs/batch_gpu_default.yaml
-  batch_setup: true
-  config: train-PU200-best.yaml
-  name: LayerlessEmbedding
-  resume_id: null
-  set: Embedding
+#- batch_config: configs/batch_gpu_default.yaml
+#  batch_setup: true
+#  config: train-PU200-best.yaml
+#  name: LayerlessEmbedding
+#  resume_id: null
+#  set: Embedding
 - batch_config: configs/batch_gpu_default.yaml
   batch_setup: true
   config: train-PU200-best.yaml
   name: VanillaFilter
   resume_id: null
   set: Filter
-- batch_config: configs/batch_gpu_default.yaml
-  batch_setup: true
-  config: train-PU200-best.yaml
-  name: ResAGNN
-  resume_id: null
-  set: GNN
+#- batch_config: configs/batch_gpu_default.yaml
+#  batch_setup: true
+#  config: train-PU200-best.yaml
+#  name: ResAGNN
+#  resume_id: null
+#  set: GNN
+#  devices: 1

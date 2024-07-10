@@ -7,7 +7,7 @@ from pytorch_lightning import LightningModule
 from datetime import timedelta
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 import torch.nn.functional as F
-from torch_geometric.data import DataLoader
+from torch_geometric.loader import DataLoader
 from torch.nn import Linear
 from torch.utils.tensorboard import SummaryWriter
 import torch
@@ -52,19 +52,19 @@ class GNNBase(LightningModule):
 
     def train_dataloader(self):
         if self.trainset is not None:
-            return DataLoader(self.trainset, batch_size=self.hparams["batch_size"], num_workers=1)
+            return DataLoader(self.trainset, batch_size=self.hparams["batch_size"], num_workers=128)
         else:
             return None
 
     def val_dataloader(self):
         if self.valset is not None:
-            return DataLoader(self.valset, batch_size=self.hparams["batch_size"], num_workers=1)
+            return DataLoader(self.valset, batch_size=self.hparams["batch_size"], num_workers=128)
         else:
             return None
 
     def test_dataloader(self):
         if self.testset is not None:
-            return DataLoader(self.testset, batch_size=self.hparams["batch_size"], num_workers=1)
+            return DataLoader(self.testset, batch_size=self.hparams["batch_size"], num_workers=128)
         else:
             return None
 
@@ -206,11 +206,18 @@ class GNNBase(LightningModule):
         # make log dir
         if self.epoch == 1:
             i = 0
-            self.log_dir = os.path.join(self.hparams["checkpoint_path"], f"version{i}")
-            while(os.path.exists(self.log_dir)):
-                i += 1
+            if 'last.ckpt' in self.hparams["checkpoint_path"]:
+                self.log_dir = os.path.basename(os.path.basename(os.path.basename(self.hparams["checkpoint_path"])))
+                while(os.path.exists(self.log_dir)):
+                    i += 1
+                    self.log_dir = self.log_dir.replace(f'version{i}', f'version{i+1}')
+                    #os.path.join(self.hparams["checkpoint_path"], f"version{i}")
+            else:
                 self.log_dir = os.path.join(self.hparams["checkpoint_path"], f"version{i}")
-            self.log_dir = os.path.join(self.hparams["checkpoint_path"], f"version{i - 1}")
+                while(os.path.exists(self.log_dir)):
+                    i += 1
+                    self.log_dir = os.path.join(self.hparams["checkpoint_path"], f"version{i}")
+                self.log_dir = os.path.join(self.hparams["checkpoint_path"], f"version{i - 1}")
 
         self.writer = SummaryWriter(log_dir=self.log_dir)
         

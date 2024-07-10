@@ -1,0 +1,32 @@
+efficiency:
+  plot: exatrkx.train_log
+  args:
+    tag: efficiency
+    ax_opts:
+      ylim: [0.4, 1.05]
+      ylabel: Efficiency
+
+purity:
+  plot: exatrkx.train_log
+  args:
+    tag: purity
+    ax_opts:
+      ylabel: Purity
+
+train_loss:
+  plot: exatrkx.train_log
+  args:
+    tag: loss
+    plot_opts:
+      label: Train Loss
+    ax_opts:
+      ylabel: Loss
+
+val_loss:
+  plot: exatrkx.train_log
+  args:
+    tag: loss
+    plot_opts:
+      label: Val Loss
+    ax_opts:
+      ylabel: Loss

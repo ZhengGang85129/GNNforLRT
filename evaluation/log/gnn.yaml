@@ -1,0 +1,37 @@
+checkpoints:
+  list: ["/global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints"]
+
+version:
+  list:
+    - "version_1"
+    #- "version_0"
+    #- "version_0"
+
+event:
+  files:
+    gnn_log:
+      file: "{checkpoints}/LRT_GNN/{version}"
+      parser: tb.log
+
+  data:
+    gnn_train:
+      gnn_log:
+        loss:
+          tag: train_loss
+          processing:
+            - select: { column: 2 }
+
+    gnn_val:
+      gnn_log:
+        loss:
+          tag: val_loss
+          processing:
+            - select: { column: 2 }
+        purity:
+          tag: pur
+          processing:
+            - select: { column: 2 }
+        efficiency:
+          tag: eff
+          processing:
+            - select: { column: 2 }

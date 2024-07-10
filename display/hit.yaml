@@ -1,0 +1,62 @@
+evtid:
+  range: [0, 10000]
+
+event:
+  files:
+    hits:
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_best_Embed//test/{evtid}"
+      parser: pyg.pickle
+
+    particles:
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV/TTbar_DiLep_output_PU200_RAW/event{evtid:09}-particles.csv"
+      parser: pandas.csv
+
+  data:
+    hits:
+      hits:
+        hit_id: hid
+        particle_id: pid
+        r:
+          tag: x
+          processing:
+            - select: { column: 0 }
+        phi:
+          tag: x
+          processing:
+           - select: { column: 1 }
+        z:
+          tag: x
+          processing:
+           - select: { column: 2 }
+
+    truth:
+      hits:
+        hit_id: hid
+        particle_id: pid
+
+    particles:
+      particles:
+        particle_id: particle_id
+        particle_type: particle_type
+        charge: q
+        # Parent information.
+        parent_ptype: parent_pid
+        # Production vertex.
+        vx: vx
+        vy: vy
+        vz: vz
+        # Momentum.
+        px: px
+        py: py
+        pz: pz
+
+    edges:
+      hits:
+        sender:
+          tag: layerless_true_edges
+          processing:
+            - select: { row: 0 }
+        receiver:
+          tag: layerless_true_edges
+          processing:
+            - select: { row: 1 }
