@@ -1,0 +1,41 @@
+input_dir:  
+output_dir:  
+project: LRT_Filter
+filter_cut: 0.03
+overwrite: true
+pt_background_min: 0.0
+pt_signal_min: 0.0
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 6000
+  - 1000
+  - 3000
+endcaps: true
+true_edges: layerless_true_edges
+noise: true
+in_channels: 3
+hidden: 1024
+nb_layer: 5
+emb_channels: 0
+batch_size: 1
+layernorm: true
+batchnorm: false
+n_chunks: 8
+edges_per_batch: 300000
+ratio: 2
+weight: 1.6600000000000001
+warmup: 800
+lr: 0.001
+devices: 1
+factor: 0.4
+patience: 9
+regime:
+- - non-ci
+  - non-ci
+max_epochs: 20
+callbacks:
+- FilterGetPurEff
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints

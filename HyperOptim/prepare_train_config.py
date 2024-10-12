@@ -7,17 +7,15 @@ import ruamel.yaml
 def main() -> None:
     global example_file, stages, input_folder, SAMPLENAME, config_file, GroupInFolder
     SAMPLENAME = 'PU40' #FIXME
-    GroupInFolder = '/global/cfs/cdirs/m3443/data/GNNforLRT' #FIXME
-    GroupInFolder = os.path.join(GroupInFolder, 'trackPt1GeV') #FIXME
+    GroupInFolder = '/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV' #FIXME
     stages = ['Embedding', 'Filter', 'GNN']
     
     SampleInFolder = {
-        'noPU': os.path.join(GroupInFolder, 'TTbar_output_noPU_npz'),
-        'PU40': os.path.join(GroupInFolder, 'TTbar_output_PU40_npz'),
-        'PU200': os.path.join(GroupInFolder, 'TTbar_output_PU200_npz'),
+        'noPU': os.path.join(GroupInFolder, 'TTbar_DiLep_output_noPU_npz'),
+        'PU200': os.path.join(GroupInFolder, 'TTbar_DiLep_output_PU200_npz'),
     }
-    example_file = 'LightningModules/STAGE/train.yaml' #FIXME
-    config_file = 'LightningModules/STAGE/train-SAMPLENAME.yaml' #FIXME
+    example_file = 'HyperOptim/train-STAGE_template.yaml' #FIXME
+    config_file = 'HyperOptim/STAGE/train-SAMPLENAME.yaml' #FIXME
     
     input_folder = SampleInFolder[SAMPLENAME] #Input Sample for first stage: Embedding 
         

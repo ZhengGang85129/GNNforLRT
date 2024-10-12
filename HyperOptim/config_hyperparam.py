@@ -14,7 +14,7 @@ def myparser():
     parser.add_argument('--filter', type = str, default = None)
     parser.add_argument('--gnn', type = str, default = None)
     parser.add_argument('--task_name', type = str, required = True)
-    parser.add_argument('--sample', type = str, required = True, choices = ['noPU', 'PU40', 'PU200']) 
+    parser.add_argument('--sample', type = str, required = True, choices = ['noPU', 'PU40', 'PU200', 'MIX']) 
     parser.add_argument('--only', default = 'Embedding:Filter:GNN', choices = ['Embedding', 'Filter', 'GNN', 'Embedding:Filter', 'Embedding:GNN', 'Filter:GNN', 'Embedding:Filter:GNN'])
     args = parser.parse_args()
     return args 
@@ -44,7 +44,7 @@ def setup_yaml():
 def Config_Write(stage: str, config_overwrite: Dict = None) -> None:
     
     
-    with open(f'./LightningModules/{stage}/train-noPU_default.yaml', 'r') as file:
+    with open(f'./LightningModules/{stage}/train-{stage}_template.yaml', 'r') as file:
     #with open('test-123.yaml', 'r')  as file:
         default_config = yaml.safe_load(file)
     
