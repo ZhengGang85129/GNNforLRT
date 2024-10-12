@@ -80,7 +80,11 @@ class EmbeddingPurEff(Callback):
         print("eff", eff)
         print("pur", pur)
         data = {"emb_eff": eff.item(), "emb_pur": pur.item()}
-        with open(f"tmp-{pl_module.hparams['TAG']}.yaml", 'a') as file:
+        if pl_module.hparams['stage_dir'] is None:
+            stage_dir = './'
+        else:
+            stage_dir = pl_module.hparams['stage_dir']
+        with open(f"{stage_dir}/tmp-{pl_module.hparams['TAG']}.yaml", 'a') as file:
             yaml.dump(data, file)
         print("=====================================================================\n\n")
 

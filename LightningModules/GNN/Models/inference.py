@@ -69,7 +69,11 @@ class GNNEffPur(Callback):
         print("eff", eff.item())
         print("pur", pur.item())
         data = {"gnn_eff": eff.item(), "gnn_pur": pur.item()}
-        with open(f"tmp-{pl_module.hparams['TAG']}.yaml", 'a') as file:
+        if pl_module.hparams['stage_dir'] is None:
+            stage_dir = './'
+        else:
+            stage_dir =  pl_module.hparams['stage_dir']
+        with open(f"{stage_dir}/tmp-{pl_module.hparams['TAG']}.yaml", 'a') as file:
             yaml.dump(data, file)
         print("=====================================================================\n\n")
 
@@ -78,7 +82,8 @@ class GNNEffPur(Callback):
         # =================================================================================
 
         print("plotting...")
-        with open(f"tmp-{pl_module.hparams['TAG']}.yaml", 'r') as file:
+        print(f'save in {stage_dir}/tmp-{pl_module.hparams["TAG"]}.yaml')
+        with open(f"{stage_dir}/tmp-{pl_module.hparams['TAG']}.yaml", 'r') as file:
             datas = yaml.load(file, yaml.FullLoader)
 
         effs = [
