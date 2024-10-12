@@ -63,4 +63,4 @@ if __name__ == '__main__':
             'truth': truth,
             'score': score
         }
-    ).plot(save=f"metrics/TTbar_PU40_performance_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf")
+    ).plot(save=f"metrics/TTbar_noPU_performance_{datetime.now().strftime('%Y%m%d_%H%M')}.png")
