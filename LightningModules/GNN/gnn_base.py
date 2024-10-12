@@ -171,13 +171,13 @@ class GNNBase(LightningModule):
 
         # Edge filter performance
         preds = F.sigmoid(output) > self.hparams["edge_cut"]
-        edge_positive = preds.sum().float()
+        edge_positive = preds.sum().float().clone().detach() 
 
-        edge_true = truth.sum().float()
-        edge_true_positive = (truth.bool() & preds).sum().float()
+        edge_true = truth.sum().float().clone().detach() 
+        edge_true_positive = (truth.bool() & preds).sum().float().clone().detach() 
 
-        eff = torch.tensor(edge_true_positive / edge_true)
-        pur = torch.tensor(edge_true_positive / edge_positive)
+        eff = torch.tensor((edge_true_positive / edge_true).clone().detach() )
+        pur = torch.tensor((edge_true_positive / edge_positive).clone().detach() )
 
         if log:
             current_lr = self.optimizers().param_groups[0]["lr"]
