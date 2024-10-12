@@ -1,5 +1,5 @@
 evtid:
-  range: [0, 4500]
+  range: [0, 5000]
 
 gnn_arch:
   list:
@@ -8,23 +8,24 @@ gnn_arch:
 event:
   files:
     gnn_processed:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_noPU_GNN_output-smeared/test/{evtid:04}"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_GNN_output-smeared_FlatPU/test/{evtid:04}"
       parser: pyg.pickle
 
     particles:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_noPU_RAW//event{evtid:09}-particles.csv"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_RAW/event{evtid:09}-particles_fake.csv"
       parser: pandas.csv
     hits:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_noPU_GNN_output-smeared/test/{evtid:04}"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_GNN_output-smeared_FlatPU/test/{evtid:04}"
       parser: pyg.pickle
     edges:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_noPU_GNN_output-smeared/test/{evtid:04}"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_GNN_output-smeared_FlatPU/test/{evtid:04}"
       parser: pyg.pickle
   data:
     particles:
       particles:
         particle_id: particle_id
         particle_type: particle_type
+        npileup: npileup
         charge: q
         # Parent information.
         parent_ptype: parent_pid
