@@ -19,7 +19,7 @@ from track_matching import match_tracks
 
 def reconstruct_and_match_tracks(
     data,
-    epsilon=0.1,
+    epsilon=0.20,
     statistics=False
 ):
     """
@@ -88,8 +88,8 @@ def reconstruct_and_match_tracks(
         truth=data['hits'],
         reconstructed=constructed_tracks,
         particles=particles,
-        min_hits_truth=5,
-        min_hits_reco=3,
+        min_hits_truth=1,
+        min_hits_reco=1,
         min_pt=1.
         # ITK dataset requirement.
         # particle_filter=particle_filter

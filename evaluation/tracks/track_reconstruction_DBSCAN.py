@@ -23,8 +23,6 @@ from plot_configurations import (
 
 import sys, os
 def plot_tracks(particles, save):
-    fig, ax = plt.subplots(2, 2, figsize=(8, 8), tight_layout=True)
-    plotter = Plotter(fig)
 
     # Setup data.
     generated = particles
@@ -34,16 +32,12 @@ def plot_tracks(particles, save):
     print(f'#generated: {len(generated)}')
     print(f'#reconstructable: {len(reconstructable)}')
     print(f'#matched: {len(matched)}')
-
-    plotter.data = {
-        'generated': generated,
-        'reconstructable': reconstructable,
-        'matched': matched
-    }
-
-    plotter[ax[0, 0]] = PlotConfig(
-        plot=tracks,
-        args={
+    print(generated)
+    
+    args = []
+    
+    args.append(
+        {
             'var_col': 'pt',
             'var_name': '$p_T$ [GeV]',
             'bins': 10 ** np.arange(0, 2.1, 0.1),
@@ -51,39 +45,51 @@ def plot_tracks(particles, save):
                 'xscale': 'log'
             }
         }
-    )
-
-    plotter[ax[0, 1]] = PlotConfig(
-        plot=tracking_efficiency,
-        args={
-            'var_col': 'pt',
-            'var_name': '$p_T$ [GeV]',
-            'bins': 10 ** np.arange(0, 2.1, 0.1),
-            'ax_opts': {
-                'xscale': 'log'
-            }
-        }
-    )
-
-    plotter[ax[1, 0]] = PlotConfig(
-        plot=tracks,
-        args={
+    ) 
+    args.append(
+        {
             'var_col': 'eta',
             'var_name': r'$\eta$',
             'bins': np.arange(-4.0, 4.1, 0.4)
         }
     )
-
-    plotter[ax[1, 1]] = PlotConfig(
-        plot=tracking_efficiency,
-        args={
-            'var_col': 'eta',
-            'var_name': r'$\eta$',
-            'bins': np.arange(-4.0, 4.1, 0.4)
+     
+    
+    args.append(
+        {
+            'var_col': 'd0',
+            'var_name': r'$d0$',
+            'bins': np.arange(0, 0.05, step=0.005)
+            #'bins': np.arange(0, 800, )
         }
+    ) 
+    
+    
+    args.append(
+        {
+            'var_col': 'z0',
+            'var_name': r'$z0$',
+            'bins': np.arange(-200, 201, step=20)
+            #'bins': np.arange(-4.0, 4.1, 0.4)
+        }
+        
     )
+    plots = [tracking_efficiency, tracking_efficiency,tracking_efficiency, tracking_efficiency,]
+    
+    for index, (plot, arg) in enumerate(zip(plots, args)):
+        fig, ax = plt.subplots(1, 1, figsize=(8, 8), tight_layout=True)
+        plotter = Plotter(fig)
+        plotter[ax] = PlotConfig(
+            args = arg,
+            plot = plot
+        )
+        plotter.data = {
+            'generated': generated,
+            'reconstructable': reconstructable,
+            'matched': matched
+        }
 
-    plotter.plot(save=save)
+        plotter.plot(save= Path(f'{index}-noPU.png'))
 
 
 if __name__ == '__main__':
@@ -93,7 +99,7 @@ if __name__ == '__main__':
     
     path = Path(f'{sys.argv[1]}')
     base_dir = Path(f'{os.path.basename(sys.argv[1])}')
-    save = Path('../metrics')
+    save = Path('.')
    
     save.mkdir(parents=True, exist_ok=True)
 
@@ -108,38 +114,38 @@ if __name__ == '__main__':
         )
 
     # All.
-    plot_tracks(
-        particles,
-        save=save / 'all.pdf'
-    )
+    #plot_tracks(
+    #    particles,
+    #    save=save / 'all.pdf'
+    #)
 
     # Displaced.
-    plot_tracks(
-        particles[
-            particle_filters['displaced'](particles)
-        ],
-        save=save / 'displaced.pdf'
-    )
+    #plot_tracks(
+    #    particles[
+    #        particle_filters['displaced'](particles)
+    #    ],
+    #    save=save / 'displaced.pdf'
+    #)
 
     # Prompt.
-    plot_tracks(
-        particles[
-            particle_filters['prompt'](particles)
-        ],
-        save=save / 'prompt.pdf'
-    )
-    plot_tracks(
-        particles,
-        save=save / 'all.png'
-    )
+    #plot_tracks(
+    #    particles[
+    #        particle_filters['prompt'](particles)
+    #    ],
+    #    save=save / 'prompt.pdf'
+    #)
+    #plot_tracks(
+    #    particles,
+    #    save=save / 'all.png'
+    #)
 
     # Displaced.
-    plot_tracks(
-        particles[
-            particle_filters['displaced'](particles)
-        ],
-        save=save / 'displaced.png'
-    )
+    #plot_tracks(
+    #    particles[
+    #        particle_filters['displaced'](particles)
+    #    ],
+    #    save=save / 'displaced.png'
+    #)
 
     # Prompt.
     plot_tracks(

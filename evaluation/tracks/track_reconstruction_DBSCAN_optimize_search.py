@@ -175,7 +175,7 @@ def plot_pur_eff(
     fig, ax = plt.subplots(
         1, 2, figsize=(16, 8), tight_layout=True
     )
-
+    print(efficiencies)
     ax[0].plot(epsilon_sample_points, efficiencies)
     ax[0].set_xlabel(r'DBSCAN $\epsilon$')
     ax[0].set_ylabel('Efficiency')
@@ -192,82 +192,82 @@ def plot_pur_eff(
 
 if __name__ == '__main__':
     
-    if len(sys.argv) != 2:
-        raise RuntimeError('usage: python3 ./track_reconstruction_DBSCAN_optimize_search.py <DBSCAN configuration file>')
+    if len(sys.argv) != 3:
+        raise RuntimeError('usage: python3 ./track_reconstruction_DBSCAN_optimize_search.py <DBSCAN configuration file> <epsilon_point>')
     
     
-    output_path = Path('../metrics/epsilon_scan')
+    output_path = Path('../metrics-PU200/epsilon_scan')
     output_path.mkdir(exist_ok=True, parents=True)
 
-    epsilon_sample_points = [
-        0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9
-    ]
+    #epsilon_sample_points = [
+    #    0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9
+    #]
+    epsilon = float(sys.argv[2].replace('p', '.'))
 
     efficiencies = []
     purities = []
+    #for epsilon in epsilon_sample_points:
+    print(f'================= epsilon: {epsilon} ===================')
+    all_particles = []
 
-    for epsilon in epsilon_sample_points:
-        all_particles = []
+    reader = DataReader(
+        config_path=sys.argv[1],
+        base_dir=os.path.basename(sys.argv[1])
+    )
 
-        reader = DataReader(
-            # config_path='../configs/reading/processed/gnn.yaml',
-            config_path=sys.argv[1],
-            base_dir=os.path.basename(sys.argv[1])
+    with multiprocessing.Pool(processes=8) as pool:
+        data = reader.read_all()
+        results = pool.starmap(
+            reconstruct_and_match_tracks,
+            zip(
+                data,
+                [epsilon]*len(data),
+                [True]*len(data)
+            )
         )
 
-        with multiprocessing.Pool(processes=8) as pool:
-            data = reader.read_all()
-            results = pool.starmap(
-                reconstruct_and_match_tracks,
-                zip(
-                    data,
-                    [epsilon]*len(data),
-                    [True]*len(data)
-                )
-            )
+        all_particles.append(pd.concat([
+            r[0] for r in results
+        ]))
 
-            all_particles.append(pd.concat([
-                r[0] for r in results
-            ]))
+        n_true = sum([
+            r[1]['n_true'] for r in results
+        ])
 
-            n_true = sum([
-                r[1]['n_true'] for r in results
-            ])
+        n_reco = sum([
+            r[1]['n_reco'] for r in results
+        ])
 
-            n_reco = sum([
-                r[1]['n_reco'] for r in results
-            ])
+        n_match = sum([
+            r[1]['n_match'] for r in results
+        ])
 
-            n_match = sum([
-                r[1]['n_match'] for r in results
-            ])
+    efficiency = n_match / n_true
+    purity = n_match / n_reco
 
-        efficiency = n_match / n_true
-        purity = n_match / n_reco
+    # Create output directory.
+    path = output_path / f'epsilon_{epsilon:.2f}'
+    path.mkdir(parents=True, exist_ok=True)
 
-        # Create output directory.
-        path = output_path / f'epsilon_{epsilon:.2f}'
-        path.mkdir(parents=True, exist_ok=True)
+    # Output summary.
+    with open(path / 'summary.txt', 'w') as fp:
+        fp.write(
+            f'===epsilon_{epsilon}===\n'
+            f'Truth tracks: {n_true:>20}\n'
+            f'Reco. tracks: {n_reco:>20}\n'
+            f'Reco. tracks Matched: {n_match:>20}\n'
+            f'Tracking Eff.: {efficiency:>20.4f}\n'
+            f'Tracking Pur.: {purity:>20.4f}\n'
+        )
 
-        # Output summary.
-        with open(path / 'summary.txt', 'w') as fp:
-            fp.write(
-                f'===epsilon_{epsilon}===\n'
-                f'Truth tracks: {n_true:>20}\n'
-                f'Reco. tracks: {n_reco:>20}\n'
-                f'Reco. tracks Matched: {n_match:>20}\n'
-                f'Tracking Eff.: {efficiency:>20.4f}\n'
-                f'Tracking Pur.: {purity:>20.4f}\n'
-            )
+    plot_tracks(pd.concat(all_particles), path)
 
-        plot_tracks(pd.concat(all_particles), path)
+        #purities.append(purity)
+        #efficiencies.append(efficiency)
 
-        purities.append(purity)
-        efficiencies.append(efficiency)
-
-    plot_pur_eff(
-        epsilon_sample_points,
-        efficiencies,
-        purities,
-        output_path
-    )
+    #plot_pur_eff(
+    #    epsilon_sample_points,
+    #    efficiencies,
+    #    purities,
+    #    output_path
+    #)
