@@ -1,0 +1,41 @@
+input_dir: 
+output_dir: 
+project: LRT_GNN
+edge_cut: 0.1
+overwrite: true
+pt_background_min: 0.0
+pt_signal_min: 0.0
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 2000
+  - 1000
+  - 2000
+endcaps: true
+true_edges: layerless_true_edges
+noise: true
+in_channels: 3
+hidden: 512
+batch_size: 1
+n_graph_iters: 6
+nb_node_layer: 4
+nb_edge_layer: 8
+emb_channels: 0
+layernorm: true
+hidden_activation: ReLU
+weight: 2.12
+delta_eta: 2.25
+warmup: 200
+lr: 0.001
+factor: 0.3
+patience: 10
+regime:
+- []
+max_epochs: 20
+devices: 2
+slack_alert: false
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints
+callbacks:
+- GNNEffPur

@@ -1,0 +1,44 @@
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Filter_output-smeared
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_GNN_output-smeared
+project: LRT_GNN
+edge_cut: 0.334
+overwrite: true
+pt_background_min: 0.0
+pt_signal_min: 0.0
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 1500
+  - 500
+  - 1500
+endcaps: true
+true_edges: layerless_true_edges
+noise: true
+in_channels: 3
+hidden: 1024
+batch_size: 1
+n_graph_iters: 4
+nb_node_layer: 2
+nb_edge_layer: 4
+emb_channels: 0
+layernorm: true
+hidden_activation: ReLU
+weight: 2.47
+delta_eta: 1.2
+warmup: 200
+lr: 0.001
+factor: 0.3
+patience: 10
+regime:
+- []
+max_epochs: 20
+devices: 2
+slack_alert: false
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/checkpoints
+callbacks:
+- GNNEffPur
+- GNNBuilder
+stage_dir: ./
+TAG: Smeared-best-PU200
