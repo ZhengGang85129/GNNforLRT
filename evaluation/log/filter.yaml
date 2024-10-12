@@ -3,7 +3,7 @@ checkpoints:
 
 version:
   list:
-    - "version_0"
+    - "version_6"
 #    - "ResAGNN+SiLU"
 #    - "InteractionGNN+ReLU"
 #    - "InteractionGNN+SiLU"

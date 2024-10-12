@@ -10,7 +10,19 @@ from ExaTrkXDataIO import DataReader
 import matplotlib.pyplot as plt
 from ExaTrkXPlotting import Plotter, PlotConfig
 from ExaTrkXPlots import hits, pairs, particles
+def make_detector_plot(hits):
 
+    fig, ax = plt.subplots()
+    # draw less dots to reduce file size
+    hits = hits.sample(frac=1).reset_index(drop=True)
+    r = hits[0:hits.shape[0]//2].r
+    z = hits[0:hits.shape[0]//2].z
+    #x_to_draw = x_to_draw[:len(event_file.x)//10]
+    ax.scatter(z/1000, r/1000, s=1, color='lightgrey')
+    ax.set_xlabel("z [m]")
+    ax.set_ylabel("r [m]")
+    fig.savefig('123.png')
+    return fig, ax
 if __name__ == '__main__':
     data_dir = Path("/global/homes/z/zhenggan/workspace/Project/display")
     reader = DataReader(
@@ -34,7 +46,7 @@ if __name__ == '__main__':
             'hit_id_1': hit_data.iloc[data['edges']['sender']]['hit_id'].to_numpy(),
             'hit_id_2': hit_data.iloc[data['edges']['receiver']]['hit_id'].to_numpy()
         })
-
+        make_detector_plot(hit_data)
         fig, ax = plt.subplots(figsize=(8, 8), tight_layout=True)
 
         Plotter(fig, {
@@ -53,7 +65,7 @@ if __name__ == '__main__':
                 #    }
                 #)
             ]
-        }).plot(save=save/'hits.pdf')
+        }).plot(save=save/'hits.png')
 
         hit_with_particles = pd.merge(
             hit_data,
@@ -99,5 +111,5 @@ if __name__ == '__main__':
                 )
 
             ]
-        }).plot(save=save/'particles.pdf')
-
+        }).plot(save=save/'particles.png')
+        #break

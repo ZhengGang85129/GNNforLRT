@@ -49,6 +49,21 @@ def plot_train_log(train_history, val_history, save=None):
         config='./log/plot.yaml',
     ).plot(save=save / 'pur_eff.pdf')
 
+    Plotter(
+        fig, {
+            ax[0]: PlotConfig(
+                config='purity'
+            ),
+            ax[1]: PlotConfig(
+                config='efficiency'
+            )
+        },
+        data={
+            'history': val_history
+        },
+        config='./log/plot.yaml',
+    ).plot(save=save / 'pur_eff.png')
+
     steps_per_epoch = int(
         len(train_history['loss']) / (len(val_history['loss'])-1)
     )
@@ -79,6 +94,28 @@ def plot_train_log(train_history, val_history, save=None):
         config='./log/plot.yaml'
     ).plot(save=save / 'loss.pdf')
 
+    Plotter(
+        fig, {
+            ax: [
+                PlotConfig(
+                    config='train_loss',
+                    data={
+                        'history': train_history
+                    },
+                    args={
+                        'steps_per_epoch': steps_per_epoch
+                    }
+                ),
+                PlotConfig(
+                    config='val_loss',
+                    data={
+                        'history': val_history
+                    }
+                )
+            ]
+        },
+        config='./log/plot.yaml'
+    ).plot(save=save / 'loss.png')
 
 def plot_gnn_train_log(train_history, val_history, sig_history, save=None):
     save = Path(save)

@@ -1,5 +1,5 @@
 checkpoints:
-  list: ["/global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints"]
+  list: ["/global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints/"]
 
 version:
   list:
@@ -13,7 +13,8 @@ version:
 event:
   files:
     embedding_log:
-      file: "{checkpoints}/LRT_Embed/{version}"
+      #file: "{checkpoints}/LRT_Embed/{version}"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/{checkpoints}/LRT_Embed/{version}"
       parser: tb.log
 
   data:

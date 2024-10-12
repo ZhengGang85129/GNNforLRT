@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
     n, bins, patches = ax.hist(
         all['d0'],
-        bins=np.arange(0, 801, step=50),
+        bins=np.arange(0, 1, step=0.01),
         histtype='step',
         density=True,
         label="All",
@@ -155,7 +155,7 @@ if __name__ == '__main__':
         all[
             all.parent_ptype.abs() == 24
             ]['d0'],
-        bins=np.arange(0, 801, step=50),
+        bins=np.arange(0, 1, step=0.01),
         histtype='step',
         density=True,
         label="Prompt",
@@ -166,7 +166,7 @@ if __name__ == '__main__':
         all[
             all.parent_ptype.abs() == 50
             ]['d0'],
-        bins=np.arange(0, 801, step=50),
+        bins=np.arange(0, 1, step=0.01),
         histtype='step',
         density=True,
         label="Displaced",

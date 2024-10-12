@@ -4,11 +4,11 @@ evtid:
 event:
   files:
     hits:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_best_Embed//test/{evtid}"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_NPZ/{evtid}.npz"
       parser: pyg.pickle
 
     particles:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV/TTbar_DiLep_output_PU200_RAW/event{evtid:09}-particles.csv"
+      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_RAW/event{evtid:09}-particles.csv"
       parser: pandas.csv
 
   data:

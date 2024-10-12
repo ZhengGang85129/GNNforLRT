@@ -3,7 +3,8 @@ checkpoints:
 
 version:
   list:
-    - "version_1"
+    - "version_354"
+
     #- "version_0"
     #- "version_0"
 
