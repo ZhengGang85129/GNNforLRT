@@ -8,7 +8,7 @@ pt_background_min: 0
 train_split:
 - - 0
   - 0
-  - 20000
+  - 2000
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3

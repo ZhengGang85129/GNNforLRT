@@ -13,7 +13,7 @@ datatype_names:
 datatype_split:
 - - 0
   - 0
-  - 20000
+  - 2000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true

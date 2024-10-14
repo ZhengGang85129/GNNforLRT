@@ -16,9 +16,28 @@ from plot_configurations import (
 
 import sys, os
 import argparse
+def myParse() -> argparse.ArgumentParser:
+    '''
+    usage: 
+    (1) Extract the generated/reconstructable/matched particles from GNN and DBSCAN stage
+        -> python3 ./tracks/evaluate_on_eff.py --config <PathToYourConfig> --output metrics/final<or Your specified Path> --mode extract --lepton <prompt/displaced/all> --fname <Specify Whatever you like>
+    (2) Evaluate on the model
+        -> python3 ./tracks/evaluate_on_eff.py --config <PathToYourConfig> --output metrics/final<or Your specified Path> --mode evaluate --lepton <prompt/displaced/all> --fname <Specify Whatever you like>
+    '''
+    
+    parser = argparse.ArgumentParser(description = 'parser for evaluation_of_eff')
+    parser.add_argument('--config', type = str, default = None)
+    parser.add_argument('-d', '--output', type = str, default = 'metrics/final')
+    parser.add_argument('-o', '--fname', type = str, default = 'test')
+    parser.add_argument('-m', '--mode', type = str, default = 'extract', choices = ['extract', 'evaluate']) 
+    parser.add_argument('--lepton', choices = ['prompt', 'displaced', 'all'], default = 'prompt')
+    
+    args = parser.parse_args()
+    #assert args.config is not None
+    return args
 
 
-def plot(data, plt_config, var_name = 'pt')->None:
+def plot_eff(data, plt_config, var_name = 'pt')->None:
     var_names = ['pt', 'eta', 'd0', 'z0', 'vr', 'npileup']
     if var_name not in var_names: raise RuntimeError(f'No corresponding plot setting for this variable name: {var_name}') 
     
@@ -53,27 +72,44 @@ def plot(data, plt_config, var_name = 'pt')->None:
     ax.legend() 
     ax.set_xlabel(plt_config['x_label'])
     ax.grid(True, linestyle = '--', alpha = 0.7)
-     
-    fig.savefig(f'test-{var_name}.png') 
     
+    plt_name = f'{args.output}/{var_name}-{args.lepton}_{args.fname}_eff.png' 
+    fig.savefig(plt_name) 
+    print(f'Check: {plt_name}') 
     
     return 
 
 
-
-
-def myParse() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description = 'parser for evaluation_of_eff')
-
-    parser.add_argument('--config', type = str, default = None)
-    parser.add_argument('-d', '--output', type = str, default = 'metrics/final')
-    parser.add_argument('-o', '--fname', type = str, default = 'test')
-    parser.add_argument('-m', '--mode', type = str, default = 'extract', choices = ['extract', 'evaluate']) 
-    parser.add_argument('--lepton', choices = ['prompt', 'displaced', 'all'], default = 'prompt')
+def plot(data, plt_config, var_name = 'pt')->None:
+    var_names = ['pt', 'eta', 'd0', 'z0', 'vr', 'npileup']
+    if var_name not in var_names: raise RuntimeError(f'No corresponding plot setting for this variable name: {var_name}') 
     
-    args = parser.parse_args()
-    #assert args.config is not None
-    return args
+    fig, ax = plt.subplots(1, 1, figsize = (8, 8), tight_layout = True)
+    #ax.hist(data['gen'][var_name], bins = plt_config['bins'], edgecolor = 'black')
+    
+    Types = ['gen', 'reco', 'matched']
+    counts = {}
+    bin_edges = {}
+    bin_centers = {}
+    bin_width = {}  
+    label_names = ['Generated', 'Reconstructable', 'Matched']
+    #<tab>
+    transparencies = [0.0, 0., 0.]
+    colors = ['red', 'blue', 'green'] 
+    for Type, label_name, alpha, color in zip(Types, label_names, transparencies, colors):
+        ax.hist(data[Type][var_name], bins = plt_config['bins'], label = label_name, facecolor = 'none', edgecolor = color)
+
+    ax.legend() 
+    ax.set_xlabel(plt_config['x_label'])
+    ax.grid(True, linestyle = '--', alpha = 0.7)
+    
+    plt_name = f'{args.output}/{var_name}-{args.lepton}_{args.fname}.png' 
+    fig.savefig(plt_name) 
+    print(f'Check: {plt_name}') 
+    
+    return 
+
+
 
 def extract():
     with multiprocessing.Pool(processes = 8) as pool:
@@ -84,8 +120,6 @@ def extract():
         particles = pd.concat(
             pool.map(reconstruct_and_match_tracks, reader.read())
         )
-    #print(particles)
-    #npileup
     
     particles = particles[particle_filters[args.lepton](particles)]
     particles.to_csv(os.path.join(args.output, args.fname+f'_gen-{args.lepton}.csv'), index = False)
@@ -142,7 +176,7 @@ def evaluate():
             
         },
         'vr':{
-            'x_label': r'$z0$',
+            'x_label': r'$v_{r}$',
             'bins': np.arange(0, 220, 20),
             'ax_opts': {
                 'xscale': 'linear',
@@ -167,6 +201,7 @@ def evaluate():
     for plt_key in plt_configs.keys():
         print(plt_key)
         plot(data, var_name = plt_key, plt_config = plt_configs[plt_key] )
+        plot_eff(data, var_name = plt_key, plt_config = plt_configs[plt_key] )
     return  
     
      
