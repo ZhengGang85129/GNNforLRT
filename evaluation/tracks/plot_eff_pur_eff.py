@@ -126,7 +126,7 @@ def plot_tracks_2D(hits: pd.DataFrame , edge_cut:float = 0.334, save: str = './'
     ax.set_title("Metrics for smeared training")
     ax.set_xlim([-length, length])
     ax.set_ylim([-0.05, 1.5])
-    fig.savefig("test.png")
+    fig.savefig("eff_pur_2D.png")
     return  
     
     #plot_2D_pur_eff()
@@ -158,12 +158,12 @@ if __name__ == '__main__':
     for event_id in event_ids:
         data = reader.read_one(evtid = event_id)
         if data is None: continue
-        hits = data['hits'].reset_index().rename(columns = {'index': 'hit_id'}) 
+        hits = data['hits'].reset_index().rename(columns = {'index': 'h_id'}) 
         edges = data['edges']
         edges = edges
-        edges = pd.concat([edges, edges.rename(columns = {'sender': 'receiver_tmp', 'receiver': 'sender_tmp'}).rename(columns = {'receiver_tmp': 'hit_id', 'sender_tmp': 'sender'})], ignore_index=True)
+        edges = pd.concat([edges, edges.rename(columns = {'sender': 'receiver_tmp', 'receiver': 'sender_tmp'}).rename(columns = {'receiver_tmp': 'h_id', 'sender_tmp': 'sender'})], ignore_index=True)
         
-        hits = edges.merge(hits, how = 'left', on = 'hit_id')
+        hits = edges.merge(hits, how = 'left', on = 'h_id')
         
         plot_tracks_2D(hits = hits, edge_cut = edge_cut)
         break
