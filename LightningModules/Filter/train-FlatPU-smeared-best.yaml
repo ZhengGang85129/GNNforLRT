@@ -40,5 +40,5 @@ max_epochs: 20
 callbacks:
 - FilterGetPurEff
 - FilterBuilder
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints/LRT_Filter/version_96/checkpoints/epoch=19-step=30000.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/Filter.ckpt
 TAG: Smeared-best-FlatPU

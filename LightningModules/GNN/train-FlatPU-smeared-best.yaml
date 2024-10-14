@@ -36,7 +36,7 @@ regime:
 max_epochs: 20
 devices: 1 #2
 slack_alert: false
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints/LRT_GNN/version_358/checkpoints/epoch=18-step=14250.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/GNN.ckpt
 callbacks:
 - GNNEffPur
 - GNNBuilder

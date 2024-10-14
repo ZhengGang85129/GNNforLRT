@@ -37,7 +37,7 @@ regime:
 - - rp
   - hnm
 max_epochs: 20
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/lightning_checkpoints/LRT_Embedding/version_95/checkpoints/epoch=19-step=30000.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/Embed.ckpt
 callbacks:
 - EmbeddingPurEff
 - EmbeddingBuilder
