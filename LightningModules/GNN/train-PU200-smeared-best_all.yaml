@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Filter_output-smeared
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_GNN_output-smeared
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_Filter_predicted_by_all-0 
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_GNN_predicted_by_all-0
 project: LRT_GNN
 edge_cut: 0.334
 overwrite: true
@@ -10,9 +10,9 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 1500
-  - 500
-  - 1500
+- - 0
+  - 0
+  - 1000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
@@ -34,11 +34,11 @@ patience: 10
 regime:
 - []
 max_epochs: 20
-devices: 2
+devices: 1
 slack_alert: false
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/checkpoints
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/GNN.ckpt 
 callbacks:
-- GNNEffPur
+#- GNNEffPur
 - GNNBuilder
 stage_dir: ./
-TAG: Smeared-best-PU200
+TAG: predicted_by_all_2 

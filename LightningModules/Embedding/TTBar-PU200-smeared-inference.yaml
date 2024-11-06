@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_NPZ
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_Embedding_output-smeared_FlatPU
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_NPZ-testOnly-TTBarModelPU200_2
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Embedding_output-smeared-TTBarModelPU200_2
 stage_dir: ./
 project: LRT_Embedding
 overwrite: true
@@ -8,7 +8,7 @@ pt_background_min: 0
 train_split:
 - - 0
   - 0
-  - 2000
+  - 750
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
@@ -39,6 +39,6 @@ regime:
 max_epochs: 20
 checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/Embed.ckpt
 callbacks:
-- EmbeddingPurEff
+#- EmbeddingPurEff
 - EmbeddingBuilder
-TAG: Smeared-best-FlatPU
+TAG: Smeared-best-PU200_TTBAR

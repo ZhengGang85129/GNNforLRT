@@ -90,5 +90,11 @@ particle_filters = {
     'prompt': lambda particles: (
         (particles['parent_ptype'] == 24) |
         (particles['parent_ptype'] == -24)
+    ),
+    'all': lambda particles: (
+        (particles['parent_ptype'] == 24) |
+        (particles['parent_ptype'] == -24) |
+        (particles['parent_ptype'] == 50) |
+        (particles['parent_ptype'] == -50)
     )
 }

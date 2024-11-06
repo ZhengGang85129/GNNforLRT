@@ -1,14 +1,14 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_NPZ
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Embedding_output-smeared
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_NPZ-testOnly-2 
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_DiLep_PU200_Embed_predicted_by_all-2 
 stage_dir: ./
 project: LRT_Embedding
 overwrite: true
 pt_signal_min: 0
 pt_background_min: 0
 train_split:
-- - 1500
-  - 500
-  - 1500
+- - 0
+  - 0
+  - 10
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
@@ -37,8 +37,8 @@ regime:
 - - rp
   - hnm
 max_epochs: 20
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/checkpoints
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Embed.ckpt
 callbacks:
-- EmbeddingPurEff
+#- EmbeddingPurEff
 - EmbeddingBuilder
-TAG: Smeared-best-PU200
+TAG: predicted_by_all_2 

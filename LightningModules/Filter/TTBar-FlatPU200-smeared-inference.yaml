@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Embedding_output-smeared
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_PU200_Filter_output-smeared
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_Embedding_output-smeared_FlatPU_byall
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_Filter_output-smeared_FlatPU_byall
 stage_dir: ./
 project: LRT_Filter
 filter_cut: 0.17200000000000001
@@ -11,9 +11,9 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 1500
-  - 500
-  - 1500
+- - 0
+  - 0
+  - 2000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
@@ -40,5 +40,5 @@ max_epochs: 20
 callbacks:
 - FilterGetPurEff
 - FilterBuilder
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/checkpoints
-TAG: Smeared-best-PU200
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Filter.ckpt
+TAG: Smeared-best-FlatPU

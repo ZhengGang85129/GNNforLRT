@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_Filter_output-smeared_FlatPU
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_GNN_output-smeared_FlatPU
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_Filter_output-smeared_FlatPU_byall
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_GNN_output-smeared_FlatPU_byall
 project: LRT_GNN
 edge_cut: 0.334
 overwrite: true
@@ -36,7 +36,7 @@ regime:
 max_epochs: 20
 devices: 1 #2
 slack_alert: false
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/GNN.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/GNN.ckpt
 callbacks:
 - GNNEffPur
 - GNNBuilder
