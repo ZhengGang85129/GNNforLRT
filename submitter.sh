@@ -18,6 +18,6 @@ nvidia-smi
 which bash
 source /global/homes/z/zhenggan/miniconda3/etc/profile.d/conda.sh
 conda activate exatrkx-gpu
-traintrack configs/pipeline-mixing_PU200_smeared.yaml #> output-PU200_GNN-0099.log 2>&1 
-mv stage_performance.png stage_performance-PU200-smeared_all.png
-mv stage_performance.pdf stage_performance-PU200-smeared_all.pdf
+traintrack ./configs/pipeline-Sample_MIX_PU200-Model_MIX_PU200.yaml #> output-PU200_GNN-0099.log 2>&1 
+mv stage_performance.png stage_performance-SampleMIXPU200-ModelMIXPU200.png
+mv stage_performance.pdf stage_performance-SampleMIXPU200-ModelMIXPU200.pdf

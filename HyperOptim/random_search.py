@@ -18,8 +18,9 @@ def produce_hyperparam(trials: int = 10, InputDir: str = None, stage: str = 'GNN
     else:
         cfg_to_be_updated['datatype_split'] = [[1000, 250, 250]]
     cfg_to_be_updated['input_dir'] = InputDir
-    cfg_to_be_updated['output_dir'] = f'/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_{sample_type}_{stage}_output-smeared'
-    cfg_to_be_updated['stage_dir'] = 'HyperOptim/results/GNN_optim_for_MIX' #FIXME
+    cfg_to_be_updated['output_dir'] = f'/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleMIX{sample_type}-ModelMIX{sample_type}-{stage}'
+    #cfg_to_be_updated['output_dir'] = f'/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_{sample_type}_{stage}_output-smeared'
+    cfg_to_be_updated['stage_dir'] = f'HyperOptim/results/{stage}_optim_for_MIX' #FIXME
     trials = 100
     for trial in range(trials):
         hyperparam_random_choice = eval(f'hyperparam_random_choice_{stage.lower()}')
@@ -32,10 +33,10 @@ def produce_hyperparam(trials: int = 10, InputDir: str = None, stage: str = 'GNN
 
 def main(stage: str = 'GNN'):
     setup_yaml()
-    seed = 429
+    seed = 129
     random.seed(seed)  
     
-    produce_hyperparam(trials = 100, InputDir = f'/global/cfs/cdirs/m3443/data/GNNforLRT/results/TTbar_MIX_Filter_output-smeared', stage = 'GNN', sample_type = 'PU200')#FIXME 
+    produce_hyperparam(trials = 100, InputDir = f'/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/mixing_PU200_NPZ', stage = 'Embedding', sample_type = 'PU200')#FIXME 
 
 def hyperparam_random_choice_filter() -> Dict:
     choices = {

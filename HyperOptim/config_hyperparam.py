@@ -30,9 +30,9 @@ def main():
             with open(getattr(args, stage.lower()), 'r') as file:
                  config_overwrite = yaml.safe_load(file)
         
-        if stage in args.only:
-            Config_Write(stage = stage, config_overwrite = config_overwrite)
-            print(f'Check -> ./LightningModules/{stage}/train-{args.sample}-{args.task_name}.yaml')
+        #if stage in args.only:
+        #    Config_Write(stage = stage, config_overwrite = config_overwrite)
+        #    print(f'Check -> ./LightningModules/{stage}/optim-{args.sample}-{args.task_name}.yaml')
 
 
 def represent_dictionary_order(self, dict_data):
