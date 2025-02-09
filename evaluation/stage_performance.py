@@ -34,6 +34,8 @@ def main(data):
     pur = [data['emb_pur'], data['fil_pur'], data['gnn_pur']]
     plt_rate(eff, 'eff.png') 
     plt_rate(pur, 'pur.png') 
+    plt_rate(eff, 'eff.pdf') 
+    plt_rate(pur, 'pur.pdf') 
     
     return 
 
