@@ -1,9 +1,9 @@
 import pandas
 import os
 
-#file_template = '/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_RAW/eventEVENTNUMBER-particles.csv'
-#out_template = '/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_RAW/eventEVENTNUMBER-particles_fake.csv'
-for i in range(2026, 20000):
+file_template = '/global/cfs/cdirs/m3443/data/GNNforLRT/raw_dataset/raw_HNL_FlatPU/eventEVENTNUMBER-particles.csv'
+out_template = '/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/HNL_output_FlatPU_RAW/eventEVENTNUMBER-particles_fake.csv'
+for i in range(20000):
     filename = file_template.replace('EVENTNUMBER', f'{i:09}')
     if not os.path.isfile(filename): 
         print(f'No such file: {filename} (skip)')
