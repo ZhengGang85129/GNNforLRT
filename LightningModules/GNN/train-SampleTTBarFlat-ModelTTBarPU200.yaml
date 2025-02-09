@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-Filter-2 
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-GNN-2 
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleTTBarFlatPU-ModelTTBarPU200-Filter-4
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleTTBarFlatPU-ModelTTBarPU200-GNN-4
 project: LRT_GNN
 edge_cut: 0.334
 overwrite: true
@@ -41,4 +41,4 @@ callbacks:
 #- GNNEffPur
 - GNNBuilder
 stage_dir: ./
-TAG: Smeared-best-PU200_TTBAR
+TAG: SampleTTBarFlatPU_ModelTTBarPU200 

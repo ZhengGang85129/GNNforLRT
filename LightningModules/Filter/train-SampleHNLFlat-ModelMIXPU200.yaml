@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-Embed-2 
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-Filter-2 
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarFlatPU-ModelTTBarPU200-Embed-4
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarFlatPU-ModelTTBarPU200-Filter-4
 stage_dir: ./
 project: LRT_Filter
 filter_cut: 0.17200000000000001
@@ -40,5 +40,5 @@ max_epochs: 20
 callbacks:
 #- FilterGetPurEff
 - FilterBuilder
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/Filter.ckpt #/global/cfs/cdirs/m3443/data/GNNforLRT/checkpoints
-TAG: Smeared-best-PU200_TTBAR
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Filter.ckpt
+TAG: SampleTTBarFlatPU_ModelTTBarPU200

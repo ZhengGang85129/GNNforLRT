@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-Filter-2 
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-GNN-2 
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleHNLPU200-ModelHNLPU200-Filter-0 
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleHNLPU200-ModelHNLPU200-GNN-0
 project: LRT_GNN
 edge_cut: 0.334
 overwrite: true
@@ -10,9 +10,9 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 0
-  - 0
-  - 1000
+- - 1500
+  - 250
+  - 250
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
@@ -36,9 +36,9 @@ regime:
 max_epochs: 20
 devices: 1
 slack_alert: false
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/GNN.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forHNL/GNN.ckpt
 callbacks:
 #- GNNEffPur
 - GNNBuilder
 stage_dir: ./
-TAG: Smeared-best-PU200_TTBAR
+TAG: SampleHNLPU200_ModelHNLPU200 

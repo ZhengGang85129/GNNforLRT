@@ -1,0 +1,19 @@
+stage_list:
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-SampleTTBarPU200-ModelTTBarPU200.yaml
+  name: LayerlessEmbedding
+  resume_id: null
+  set: Embedding
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-SampleTTBarPU200-ModelTTBarPU200.yaml
+  name: VanillaFilter
+  resume_id: null
+  set: Filter
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-SampleTTBarPU200-ModelTTBarPU200.yaml
+  name: ResAGNN
+  resume_id: null
+  set: GNN

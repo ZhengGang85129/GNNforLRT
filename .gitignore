@@ -9,3 +9,7 @@ lightning_checkpoints/
 HyperOptim/Embedding/*
 HyperOptim/Filter/*
 HyperOptim/GNN/*
+configs/pipeline-PU200_Embed-*
+configs/pipeline-PU200_Embedding-*.yaml
+LightningModules/Embedding/optim-PU200-Embed-*.yaml
+LightningModules/Embedding/optim_Embedding-*.yaml

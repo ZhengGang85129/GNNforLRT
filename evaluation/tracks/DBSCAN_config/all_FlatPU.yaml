@@ -1,26 +1,36 @@
 evtid:
   range: [0, 5000]
 
-gnn_arch:
+gnn_output: 
+  list: 
+  - "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLFlatPU-ModelMIXPU200-GNN"
+chunck:
   list:
-    - "mixing_PU200_GNN_output-smeared"
-raw_arch:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+RAW:
   list:
-    - "TTbar_DiLep_output_PU200_RAW" 
+    - "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/HNL_output_FlatPU_RAW"
+    #- "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_RAW"
+
+
 event:
   files:
     gnn_processed:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-GNN-0/test/{evtid:04}"
+      file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
 
     particles:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/HNL_PU200_RAW/event{evtid:09}-particles.csv"
+      file: "{RAW}/event{evtid:09}-particles_fake.csv"
       parser: pandas.csv
     hits:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-GNN-0/test/{evtid:04}"
+      file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
     edges:
-      file: "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-GNN-0/test/{evtid:04}"
+      file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
   data:
     particles:
@@ -38,7 +48,7 @@ event:
         px: px
         py: py
         pz: pz
-
+        npileup: npileup
     edges:
       edges:
         sender:
