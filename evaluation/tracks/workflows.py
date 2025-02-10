@@ -52,7 +52,7 @@ def reconstruct_and_match_tracks(
         d0=d0,
         vr=vr
     )
-
+    particles = particles[particles.eta.abs() <=3]
     # Reconstruct tracks.
     constructed_tracks = reconstruct_tracks(
         algorithm=DBSCANTrackReco(
@@ -88,8 +88,8 @@ def reconstruct_and_match_tracks(
         truth=data['hits'],
         reconstructed=constructed_tracks,
         particles=particles,
-        min_hits_truth=1,
-        min_hits_reco=1,
+        min_hits_truth=5,
+        min_hits_reco=5,
         min_pt=1.
         # ITK dataset requirement.
         # particle_filter=particle_filter
