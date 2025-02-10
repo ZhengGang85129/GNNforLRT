@@ -91,6 +91,9 @@ particle_filters = {
         (particles['parent_ptype'] == 24) |
         (particles['parent_ptype'] == -24)
     ),
+    'HSS': lambda particles: (
+        (particles['parent_ptype'] == 36)
+    ),
     'all': lambda particles: (
         (particles['parent_ptype'] == 24) |
         (particles['parent_ptype'] == -24) |
