@@ -127,6 +127,7 @@ def plot_tracks_2D(hits: pd.DataFrame , edge_cut:float = 0.334, save: str = './'
     ax.set_xlim([-length, length])
     ax.set_ylim([-0.05, 1.5])
     fig.savefig("eff_pur_2D.png")
+    fig.savefig("eff_pur_2D.pdf")
     return  
     
     #plot_2D_pur_eff()
@@ -148,7 +149,7 @@ if __name__ == '__main__':
    
     save.mkdir(parents=True, exist_ok=True)
 
-    event_ids = range(0, 5000)
+    event_ids = range(0, 10000)
     
     reader = DataReader(
         config_path=path,
