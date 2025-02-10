@@ -179,7 +179,7 @@ def match_tracks(
     else:
         hits = hits[hits.nhits >= min_hits_truth]
 
-    hits = hits[hits.eta.abs() <= 4]
+    hits = hits[hits.eta.abs() <= 3]
 
     # Extract trackable particles.
     trackable_pids = np.unique(
