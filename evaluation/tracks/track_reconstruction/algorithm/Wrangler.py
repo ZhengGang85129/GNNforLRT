@@ -192,6 +192,9 @@ def reconstruct_tracks(
 
 def reconstruct_and_match_tracks(
     data,
+    filter_cut: float = 0.1,
+    walk_min: float = 0.0,
+    walk_max: float = 0.0,
     statistics = False 
 ):
     
@@ -231,8 +234,10 @@ def reconstruct_and_match_tracks(
     score = data['edges']['score'].to_numpy() 
     edges = data['edges'][['sender', 'receiver']].to_numpy() 
     
+
+    
     constructed_tracks = reconstruct_tracks(
-        algorithm = WranglerTrackReco(),
+        algorithm = WranglerTrackReco(filter_cut = filter_cut, walk_min = walk_min, walk_max = walk_max),
         hits = data['hits'][['hit_id', 'R']].to_numpy(),
         edges = edges,
         score = score
