@@ -33,7 +33,7 @@ def myParse() -> argparse.ArgumentParser:
     parser.add_argument('-m', '--mode', type = str, default = 'extract', choices = ['extract', 'evaluate', 'merge']) 
     parser.add_argument('--lepton', choices = ['prompt', 'displaced', 'all', 'HSS'], default = 'prompt')
     parser.add_argument('--merge_list' )
-    parser.add_argument('-a', '--algorithm', choices = ['DBSCAN', 'Wrangler'], default = 'DBSCAN')
+    parser.add_argument('-a', '--algorithm', choices = ['DBSCAN', 'Wrangler'], default = 'Wrangler')
     args = parser.parse_args()
     #assert args.config is not None
     return args
