@@ -8,7 +8,9 @@ from ExaTrkXDataIO import DataReader
 
 import matplotlib.pyplot as plt
 
-from workflows import reconstruct_and_match_tracks
+from workflows import reconstruct_and_match_tracks as DBSCAN
+from tracks.track_reconstruction.algorithm.Wrangler import reconstruct_and_match_tracks as Wrangler
+
 from plot_configurations import (
     particle_filters,
 )
@@ -30,7 +32,8 @@ def myParse() -> argparse.ArgumentParser:
     parser.add_argument('-o', '--fname', type = str, default = 'test')
     parser.add_argument('-m', '--mode', type = str, default = 'extract', choices = ['extract', 'evaluate', 'merge']) 
     parser.add_argument('--lepton', choices = ['prompt', 'displaced', 'all', 'HSS'], default = 'prompt')
-    parser.add_argument('--merge_list' )    
+    parser.add_argument('--merge_list' )
+    parser.add_argument('-a', '--algorithm', choices = ['DBSCAN', 'Wrangler'], default = 'DBSCAN')
     args = parser.parse_args()
     #assert args.config is not None
     return args
@@ -170,9 +173,17 @@ def extract():
             config_path = path,
             base_dir = base_dir
         )
-        particles = pd.concat(
-            pool.map(partial(reconstruct_and_match_tracks, epsilon = 0.14), reader.read())
-        )
+        if args.algorithm == 'DBSCAN':
+            particles = pd.concat(
+                pool.map(partial(eval(args.algorithm), epsilon = 0.14), reader.read())
+            )
+        elif args.algorithm == 'Wrangler':
+            particles = pd.concat(
+                pool.map(partial(eval(args.algorithm),), reader.read())
+            )
+        else:
+            raise RuntimeError(f'No such algorithm: {args.algorithm}')
+            
     particles = particles[particle_filters[args.lepton](particles)]
     particles.to_csv(os.path.join(args.output, args.fname+f'_gen-{args.lepton}.csv'), index = False)
     particles[particles.is_trackable].to_csv(os.path.join(args.output, args.fname+f'_reco-{args.lepton}.csv'), index = False)
@@ -329,15 +340,6 @@ def merge():
     return 
         
         
-        
-        
-     
-    return 
-     
-    
-     
-
-
  
 def evaluate():
     gen_particles = pd.read_csv(os.path.join(args.output, args.fname+f'_gen-{args.lepton}.csv'))
