@@ -87,14 +87,16 @@ def write_script()->None:
         f.write('#SBATCH -o ./sinfo/output.%J.out\n')
         f.write('export SLURM_CPU_BIND="cores"\n')
 
-# Change to your working directory
-        f.write('cd /global/homes/z/zhenggan/workspace/Project\n')
+        # Change to your working directory
+        f.write('cd ~/GNNforLRT\n')
         f.write('pwd\n')
         f.write('bash\n')
         f.write('nvidia-smi\n')
         f.write('which bash\n')
-        f.write('source /global/homes/z/zhenggan/miniconda3/etc/profile.d/conda.sh\n')
-        f.write('conda activate exatrkx-gpu\n')
+        # f.write('source /global/homes/z/zhenggan/miniconda3/etc/profile.d/conda.sh\n')
+        # f.write('conda activate exatrkx-gpu\n')
+        f.write('module load conda')
+        f.write('conda activate trakcml')
 
         pipeline_task = f'configs/pipeline-{args.sample}_{args.task_name}.yaml'
         command_for_traintrack = f'traintrack {pipeline_task} #> output-{args.sample}_{args.task_name}.log 2>&1 \n' 

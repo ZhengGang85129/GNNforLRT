@@ -1,0 +1,16 @@
+stage_list:
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: inference_MIXED-HSSPU200.yaml
+  name: LayerlessEmbedding
+  set: Embedding
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: inference_MIXED-HSSPU200.yaml
+  name: VanillaFilter
+  set: Filter
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: inference_MIXED-HSSPU200.yaml
+  name: ResAGNN
+  set: GNN

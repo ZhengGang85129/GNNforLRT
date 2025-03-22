@@ -66,7 +66,8 @@ class FilterGetPurEff(Callback):
         print("eff", eff)
         print("pur", pur)
         data = {"fil_eff": eff.item(), "fil_pur": pur.item()}
-        if pl_module.hparams['stage_dir'] is None:
+
+        if pl_module.hparams.get('stage_dir', None) is None:
             stage_dir = './'
         else:
             stage_dir = pl_module.hparams['stage_dir'] 

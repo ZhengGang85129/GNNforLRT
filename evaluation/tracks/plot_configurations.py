@@ -83,6 +83,12 @@ plot_configs = {
 }
 
 particle_filters = {
+    '2212': lambda particles: (
+        (particles['parent_ptype'] == 2212)
+    ),
+    '36': lambda particles: (
+        (particles['parent_ptype'] == 36)
+    ),
     'displaced': lambda particles: (
         (particles['parent_ptype'] == 50) |
         (particles['parent_ptype'] == -50)

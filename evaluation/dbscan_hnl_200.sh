@@ -1,0 +1,2 @@
+python3 ./tracks/evaluate_on_eff.py --config tracks/DBSCAN_config/MIXED-HSSPU200.yaml --output metrics/MIXED-HSSPU200-2212-testing --mode extract --lepton 2212 --fname MIXED-HSSPU200
+python3 ./tracks/evaluate_on_eff.py --config tracks/DBSCAN_config/MIXED-HSSPU200.yaml --output metrics/MIXED-HSSPU200-2212-testing --mode evaluate --lepton 2212 --fname MIXED-HSSPU200

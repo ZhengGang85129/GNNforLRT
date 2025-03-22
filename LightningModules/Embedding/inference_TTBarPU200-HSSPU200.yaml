@@ -1,0 +1,46 @@
+TAG: TTBarPU200-HSSPU200
+batch_size: 1
+callbacks:
+- EmbeddingPurEff
+- EmbeddingBuilder
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forTTBar/Embed.ckpt
+devices: 1
+emb_dim: 4
+emb_hidden:
+- - 256
+  - 256
+  - 256
+  - 256
+factor: 0.58
+in_channels: 3
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/HSS_pgy_PU200
+knn: 4
+log_dir: logging/TTBarPU200-HSSPU200
+lr: 0.0003
+margin: 0.19
+max_epochs: 20
+nb_layer: 6
+noise: true
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHSSPU200-ModelTTBarPU200-Embed
+overwrite: true
+patience: 10
+performance_path: TTBarPU200-HSSPU200.yaml
+points_per_batch: 100000
+project: LRT_Embedding
+pt_background_min: 0
+pt_signal_min: 0
+r_test: 0.33999999999999997
+r_train: 0.33999999999999997
+r_val: 0.33999999999999997
+randomisation: 2
+regime:
+- - rp
+  - hnm
+stage_dir: ./
+train_split:
+- - 0
+  - 0
+  - 1500
+true_edges: layerless_true_edges
+warmup: 4
+weight: 1.5

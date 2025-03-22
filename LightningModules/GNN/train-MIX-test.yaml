@@ -1,0 +1,44 @@
+batch_size: 1
+callbacks:
+- GNNEffPur
+- GNNBuilder
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/ckpt/forMIX/GNN.ckpt
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 2000
+  - 500
+  - 500
+delta_eta: 1.2
+edge_cut: 0.5
+emb_channels: 0
+endcaps: true
+factor: 0.3
+hidden: 1024
+hidden_activation: ReLU
+in_channels: 3
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TRAIN_MIXPU200-Filter
+layernorm: true
+log_dir: logging/TRAIN_MIXPU200
+lr: 0.0001
+max_epochs: 25
+n_graph_iters: 3
+nb_edge_layer: 2
+nb_node_layer: 5
+noise: true
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TRAIN_MIXPU200-GNN
+overwrite: true
+patience: 10
+performance_path: TRAIN_MIXPU200.yaml
+project: LRT_GNN
+pt_background_min: 0.0
+pt_signal_min: 0.0
+regime:
+- []
+slack_alert: false
+true_edges: layerless_true_edges
+warmup: 200
+weight: 2
+TAG: TRAIN_MIXPU200

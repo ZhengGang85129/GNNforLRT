@@ -26,11 +26,11 @@ def myParse() -> argparse.ArgumentParser:
     '''
     
     parser = argparse.ArgumentParser(description = 'parser for evaluation_of_eff')
-    parser.add_argument('--config', type = str, default = None)
+    parser.add_argument('--config', type = str, default = 'tracks/DBSCAN_config/HNL_PU200.yaml')
     parser.add_argument('-d', '--output', type = str, default = 'metrics/final')
     parser.add_argument('-o', '--fname', type = str, default = 'test')
     parser.add_argument('-m', '--mode', type = str, default = 'extract', choices = ['extract', 'evaluate']) 
-    parser.add_argument('--lepton', choices = ['prompt', 'displaced', 'all'], default = 'prompt')
+    parser.add_argument('--lepton', choices = ['prompt', 'displaced', '2212', '36', 'all'], default = 'all')
     
     args = parser.parse_args()
     #assert args.config is not None
@@ -121,7 +121,9 @@ def extract():
             pool.map(reconstruct_and_match_tracks, reader.read())
         )
     
-    particles = particles[particle_filters[args.lepton](particles)]
+    if args.lepton != 'all':
+        particles = particles[particle_filters[args.lepton](particles)]
+
     particles.to_csv(os.path.join(args.output, args.fname+f'_gen-{args.lepton}.csv'), index = False)
     particles[particles.is_trackable].to_csv(os.path.join(args.output, args.fname+f'_reco-{args.lepton}.csv'), index = False)
     particles[particles.is_trackable & particles.is_matched].to_csv(os.path.join(args.output, args.fname+f'_match-{args.lepton}.csv'), index = False)
@@ -143,7 +145,8 @@ def evaluate():
     plt_configs = {
         'pt':{
         'x_label': r'$p_{T}$ [GeV]',
-        'bins': 10 ** np.arange(0, 2.1, 0.1),
+        # 'bins': 10 ** np.arange(0, 2.1, 0.1),
+        'bins': 10 ** np.arange(0.01, 2.1, 0.02),
         'ax_opts': {
             'xscale': 'log',
             'yscale': 'linear'
@@ -151,7 +154,7 @@ def evaluate():
     },
         'eta':{
             'x_label': r'$\eta$',
-            'bins': np.arange(-4.0, 4.1, 0.4),
+            'bins': np.arange(-4.0, 4.1, 0.15),
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
@@ -159,7 +162,7 @@ def evaluate():
         },
         'd0':{
             'x_label': r'$d0$',
-            'bins': np.arange(0, 0.1, 0.01),
+            'bins': np.arange(0, 100, 1),
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
@@ -168,7 +171,7 @@ def evaluate():
         },
         'z0':{
             'x_label': r'$z0$',
-            'bins': np.arange(-200, 201, 20),
+            'bins': np.arange(-200, 201, 15),
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
@@ -177,22 +180,22 @@ def evaluate():
         },
         'vr':{
             'x_label': r'$v_{r}$',
-            'bins': np.arange(0, 220, 20),
+            'bins': np.arange(0, 220, 13),
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
             }
             
         },
-        'npileup':{
-            'x_label': r'$N_{PU}$',
-            'bins': 20,
-            'ax_opts': {
-                'xscale': 'linear',
-                'yscale': 'linear'
-            }
+        # 'npileup':{
+        #     'x_label': r'$N_{PU}$',
+        #     'bins': 20,
+        #     'ax_opts': {
+        #         'xscale': 'linear',
+        #         'yscale': 'linear'
+        #     }
             
-        }
+        # }
     }
      
     print(f"#generated: {len(data['gen'])}")

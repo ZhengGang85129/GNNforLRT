@@ -1,0 +1,41 @@
+batch_size: 1
+callbacks:
+- EmbeddingPurEff
+- EmbeddingBuilder
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/ckpt/forHNL/Embed.ckpt
+emb_dim: 12
+emb_hidden: 1024
+factor: 0.58
+in_channels: 3
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/raw_dataset/HNL_output_PU200_npz
+knn: 200
+log_dir: logging/TRAIN_HNLPU200
+lr: 0.0001
+margin: 0.2
+max_epochs: 30
+nb_layer: 4
+noise: true
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/TRAIN_HNLPU200-Embed
+overwrite: true
+patience: 19
+performance_path: TRAIN_HNLPU200.yaml
+points_per_batch: 130000
+project: LRT_Embedding
+pt_background_min: 0
+pt_signal_min: 0
+r_test: 0.2
+r_train: 0.2
+r_val: 0.2
+randomisation: 2
+regime:
+- - rp
+  - hnm
+  - norm
+train_split:
+- - 2000
+  - 500
+  - 500
+true_edges: layerless_true_edges
+warmup: 4
+weight: 4
+TAG: TRAIN_HNLPU200

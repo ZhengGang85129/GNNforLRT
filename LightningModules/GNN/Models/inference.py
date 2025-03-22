@@ -69,7 +69,7 @@ class GNNEffPur(Callback):
         print("eff", eff.item())
         print("pur", pur.item())
         data = {"gnn_eff": eff.item(), "gnn_pur": pur.item()}
-        if pl_module.hparams['stage_dir'] is None:
+        if pl_module.hparams.get('stage_dir', None) is None:
             stage_dir = './'
         else:
             stage_dir =  pl_module.hparams['stage_dir']
@@ -181,7 +181,7 @@ class GNNTelemetry(Callback):
         score_cuts = np.arange(0., 1., 0.05)
         
         positives = np.array([(self.preds > score_cut).sum() for score_cut in score_cuts])
-        print(type(self.truth))
+        # print(type(self.truth))
         true_positives = np.array([((self.preds > score_cut).to(dtype=torch.bool) & self.truth.to(dtype=torch.bool)).sum() for score_cut in score_cuts])
                 
         eff = true_positives / self.truth.sum()
