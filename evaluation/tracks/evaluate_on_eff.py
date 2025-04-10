@@ -47,7 +47,7 @@ def put_text(ax, sample_name = 'ttbar', pileup = 'flat'):
         ax.text(0.05, 0.72, rf"Evalutated on process with $\langle \mu \rangle = {pileup}$", transform = ax.transAxes, fontsize = 16)
     ax.text(0.05, 0.72, r'$\mathbf{Open \  data \ detector} (Fastras sim.)$', transform = ax.transAxes, fontsize = 18)
     ax.text(0.72, 0.77, r'$\sqrt{s} = 14 \  \mathbf{TeV}$', transform = ax.transAxes, fontsize = 20) 
-    ax.text(0.05, 0.68, r'DBScan with $\varepsilon = 0.14$', transform = ax.transAxes, fontsize = 18 )
+    ax.text(0.05, 0.68, r'Walkthrough algo. with $\omega_{1} = 0.3$ and $\omega_{2} = 0.8.$', transform = ax.transAxes, fontsize = 18 )
 
     #.legend(title='abc xyz')
 
@@ -179,7 +179,7 @@ def extract():
             )
         elif args.algorithm == 'Wrangler':
             particles = pd.concat(
-                pool.map(partial(eval(args.algorithm),), reader.read())
+                pool.map(partial(eval(args.algorithm), filter_cut = 0.1, walk_min = 0.2, walk_max = 0.9), reader.read())
             )
         else:
             raise RuntimeError(f'No such algorithm: {args.algorithm}')
@@ -240,7 +240,7 @@ def merge():
         },
         'npileup':{
             'x_label': r'$N_{PU}$',
-            'bins': 10,
+            'bins': 20,
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
@@ -263,17 +263,17 @@ def merge():
     for index in range(len(dataframe)):
         prefix = dataframe.iloc[index]['prefix']
         lepton_type = dataframe.iloc[index]['lepton_type']
-        gen_path = os.path.join('metrics/final', f'{prefix}_gen-{lepton_type}.csv')
-        match_path = os.path.join('metrics/final', f'{prefix}_match-{lepton_type}.csv') 
-        reco_path = os.path.join('metrics/final', f'{prefix}_reco-{lepton_type}.csv') 
+        gen_path = os.path.join('metrics', f'{prefix}_gen-{lepton_type}.csv')
+        match_path = os.path.join('metrics', f'{prefix}_match-{lepton_type}.csv') 
+        reco_path = os.path.join('metrics', f'{prefix}_reco-{lepton_type}.csv') 
         if not os.path.isfile(gen_path) or not os.path.join(reco_path) or not os.path.isfile(match_path):
             print(f'check: {reco_path}\n'
                   f'{gen_path}\n'
                   f'{match_path}')
             continue 
         
-        particles['reco'][prefix] = pd.read_csv(os.path.join('metrics/final', f'{prefix}_reco-{lepton_type}.csv')) 
-        particles['match'][prefix] = pd.read_csv(os.path.join('metrics/final', f'{prefix}_match-{lepton_type}.csv')) 
+        particles['reco'][prefix] = pd.read_csv(os.path.join('metrics', f'{prefix}_reco-{lepton_type}.csv')) 
+        particles['match'][prefix] = pd.read_csv(os.path.join('metrics', f'{prefix}_match-{lepton_type}.csv')) 
          
     var_names = ['npileup', 'pt', 'eta', 'vr', 'z0', 'd0']
     
@@ -398,7 +398,7 @@ def evaluate():
         },
         'npileup':{
             'x_label': r'$N_{PU}$',
-            'bins': 10,
+            'bins': 20,
             'ax_opts': {
                 'xscale': 'linear',
                 'yscale': 'linear'
