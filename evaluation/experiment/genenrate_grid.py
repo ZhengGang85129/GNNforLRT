@@ -1,3 +1,4 @@
+import os
 def format_parameter_file(input_file, output_file):
     """
     Read parameter combinations from input file and write them in a formatted way
@@ -17,7 +18,8 @@ def format_parameter_file(input_file, output_file):
     # Create the formatted header
     formatted_header = '  '.join(header.ljust(width) for header, width in zip(headers, max_widths))
     separator = '-' * len(formatted_header)
-    
+    os.system(f"rm {input_file}") 
+    print(f"rm {input_file}") 
     # Write the formatted output
     with open(output_file, 'w') as f:
         f.write(formatted_header + '\n')

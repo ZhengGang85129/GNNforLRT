@@ -53,11 +53,12 @@ if __name__ == '__main__':
     OUT_FOLDER = 'metrics/final/experiments_on_filter_cut'
     if not os.path.isdir(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
-    configs = Path('tracks/DBSCAN_config/TTBar_PU200.yaml') #!CHANGE ME!
+    configs = Path('./tracks/DBSCAN_config/all_PU200.yaml') #!CHANGE ME!
     
     base_dir = Path(os.path.basename(configs))
-    lepton_type = 'prompt' #!CHANGE ME! option:  displaced/prompt/HSS/prompt
+    lepton_type = 'displaced' #!CHANGE ME! option:  displaced/prompt/HSS/prompt
     start = time.time()
     print(f'grid search starting... parameters: (filter_cut= {parser.filter_cut}, walk_min = {parser.walk_min}, walk_max = {parser.walk_max})')
     search_parameter_space(filter_cut = parser.filter_cut, walk_min = parser.walk_min, walk_max = parser.walk_max)
     print(time.time() - start, ' sec')
+    print('Completed.')
