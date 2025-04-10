@@ -1,8 +1,8 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-Embed-0
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-Filter-0
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Embed_inference
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Filter_inference
 stage_dir: ./
 project: LRT_Filter
-filter_cut: 0.17200000000000001
+filter_cut: 0.01
 overwrite: true
 pt_background_min: 0.0
 pt_signal_min: 0.0
@@ -11,34 +11,32 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 0 
-  - 0
-  - 1000
+- - 0 #1500
+  - 0 #250
+  - 1000 #1000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
-hidden: 1024
-nb_layer: 3
+hidden: 512
+nb_layer: 8
 emb_channels: 0
 batch_size: 1
 layernorm: true
 batchnorm: false
-n_chunks: 8
+n_chunks: 4
 edges_per_batch: 300000
 ratio: 2
-weight: 1.6300000000000001
+weight: 1
 warmup: 800
 lr: 0.001
 devices: 1
 factor: 0.4
-patience: 9
+patience: 5
 regime:
-- - non-ci
-  - non-ci
-max_epochs: 20
+- []
+max_epochs: 30
 callbacks:
-#- FilterGetPurEff
 - FilterBuilder
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Filter.ckpt
-TAG: SampleMIXPU200-ModelMIXPU200 
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Filter_optimized_onHNL.ckpt
+TAG: SampleHSSPU200_ModelMIXPU200_inference

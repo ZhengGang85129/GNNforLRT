@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared_final/TTBar_FlatPU_inference-only-NPZ-4
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarFlatPU-ModelTTBarPU200-Embed-4
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared_final/HNL_FlatPU_inference-only-NPZ-0
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLFlatPU-ModelMIXPU200-Embed-0
 stage_dir: ./
 project: LRT_Embedding
 overwrite: true

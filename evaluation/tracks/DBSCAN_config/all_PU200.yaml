@@ -1,10 +1,11 @@
 evtid:
-  range: [0, 5000]
+  range: [2000, 3000]
 
 gnn_output: 
-  list: 
-  #- "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleTTBarPU200-ModelTTBarPU200"
+  list:
   - "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelHNLPU200-GNN"
+  #- "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHSSPU200-ModelMIXED-GNN" 
+  #- "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarPU200-ModelTTBarPU200-GNN"
 chunck:
   list:
     #- GNN
@@ -19,23 +20,27 @@ chunck:
 RAW:
   list:
     - "/global/cfs/cdirs/m3443/data/GNNforLRT/raw_dataset/raw_HNL_PU200/"
+    #- "/global/cfs/cdirs/m3443/data/GNNforLRT/Hss_Pt1GeV_PU200_RAW/HSS_output_PU200/"
     #- "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_FlatPU_RAW"
     #- "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/TTbar_DiLep_output_PU200_RAW"
 
 event:
   files:
     gnn_processed:
-      file: "{gnn_output}-{chunck}/test/{evtid:04}"
+      file: "{gnn_output}/test/{evtid:04}"
+      #file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
 
     particles:
       file: "{RAW}/event{evtid:09}-particles.csv"
       parser: pandas.csv
     hits:
-      file: "{gnn_output}-{chunck}/test/{evtid:04}"
+      file: "{gnn_output}/test/{evtid:04}"
+      #file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
     edges:
-      file: "{gnn_output}-{chunck}/test/{evtid:04}"
+      file: "{gnn_output}/test/{evtid:04}"
+      #file: "{gnn_output}-{chunck}/test/{evtid:04}"
       parser: pyg.pickle
   data:
     particles:

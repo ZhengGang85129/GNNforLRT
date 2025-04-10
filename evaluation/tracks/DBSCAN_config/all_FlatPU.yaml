@@ -3,14 +3,15 @@ evtid:
 
 gnn_output: 
   list: 
+  #- "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleTTBarFlatPU-ModelTTBarPU200-GNN"
   - "/global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLFlatPU-ModelMIXPU200-GNN"
 chunck:
   list:
     - 0
-    - 1
-    - 2
-    - 3
-    - 4
+    #- 1
+    #- 2
+    #- 3
+    #`- 4
 RAW:
   list:
     - "/global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/HNL_output_FlatPU_RAW"

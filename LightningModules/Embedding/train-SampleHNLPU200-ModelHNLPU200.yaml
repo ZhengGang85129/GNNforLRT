@@ -1,44 +1,43 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared_final/HNL_PU200_inference-only-NPZ-0/
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/SampleHNLPU200-ModelHNLPU200-Embed-0
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/HSS_pgy_PU200
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHSSPU200_ModelHNLPU200-Embed_inference
 stage_dir: ./
 project: LRT_Embedding
 overwrite: true
 pt_signal_min: 0
 pt_background_min: 0
 train_split:
-- - 1500
-  - 250
-  - 250
+- - 1500 #1500
+  - 250 #250
+  - 1000 #1000
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
 emb_hidden:
-- - 256
-  - 256
-  - 256
-  - 256
-nb_layer: 6
-emb_dim: 4
-weight: 1.5
+- - 1024
+  - 1024
+  - 1024
+  - 1024
+nb_layer: 4
+emb_dim: 12
+weight: 4
 randomisation: 2
 batch_size: 1
-points_per_batch: 100000
-r_train: 0.33999999999999997
-r_val: 0.33999999999999997
-r_test: 0.33999999999999997
-knn: 4
+points_per_batch: 130000
+r_test: 0.2
+r_train: 0.2
+r_val: 0.2
+knn: 8
 warmup: 4
-margin: 0.19
-lr: 0.0003
-devices: 1
+margin: 0.2
+lr: 0.0001
+devices: 1 # 2 for 2 gpus
 factor: 0.58
-patience: 10
+patience: 5
 regime:
 - - rp
   - hnm
-max_epochs: 20
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forHNL/Embed.ckpt
+max_epochs: 30
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forHNL/Embed0.ckpt
 callbacks:
-#- EmbeddingPurEff
 - EmbeddingBuilder
-TAG: SampleHNLPU200_ModelHNLPU200
+TAG: SampleHSSPU200_ModelHNLPU200_inference

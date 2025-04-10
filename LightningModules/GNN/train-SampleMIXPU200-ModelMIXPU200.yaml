@@ -1,7 +1,7 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-Filter-0
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results_final/Inference-SampleHNLPU200-ModelMIXPU200-GNN-0
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Filter_inference
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-GNN_inference
 project: LRT_GNN
-edge_cut: 0.334
+edge_cut: 0.5
 overwrite: true
 pt_background_min: 0.0
 pt_signal_min: 0.0
@@ -10,35 +10,34 @@ datatype_names:
   - val
   - test
 datatype_split:
-- - 0
-  - 0
-  - 1000
+- - 0 #1500
+  - 0 #250
+  - 1000 #1000
 endcaps: true
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
 hidden: 1024
 batch_size: 1
-n_graph_iters: 4
-nb_node_layer: 2
-nb_edge_layer: 4
+n_graph_iters: 3
+nb_edge_layer: 2
+nb_node_layer: 5
 emb_channels: 0
 layernorm: true
 hidden_activation: ReLU
-weight: 2.47
+weight: 2
 delta_eta: 1.2
 warmup: 200
-lr: 0.001
+lr: 0.0001
 factor: 0.3
-patience: 10
+patience: 5
 regime:
 - []
-max_epochs: 20
+max_epochs: 30
 devices: 1
 slack_alert: false
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/GNN.ckpt
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/GNN_optimized_onHNL.ckpt
 callbacks:
-#- GNNEffPur
 - GNNBuilder
 stage_dir: ./
-TAG: SampleMIXPU200-ModelMIXPU200 
+TAG: SampleHSSPU200_ModelMIXPU200_inference
