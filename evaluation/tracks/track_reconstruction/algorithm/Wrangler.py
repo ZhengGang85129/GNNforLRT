@@ -141,11 +141,19 @@ class WranglerTrackReco(TrackRecoAlgorithm):
         with graph_lock:
             self.G.remove_edges_from(list_fake_edges)
             self.G.remove_nodes_from(list(nx.isolates(self.G))) 
-        cycles = list(nx.simple_cycles(self.G))
-        if cycles:
-            print(f"Found {len(cycles)} cycles after modifications")
-            print(f"=> Skip this event...") 
-            return pd.DataFrame(data=[], columns=['hit_id', 'track_id']) 
+        while True:
+            try:
+                #print("Graph type:", type(self.G))
+                cycle = nx.find_cycle(self.G, orientation="original")
+                print(cycle[0])
+                for edge in cycle:
+                    u, v = edge[0], edge[1]
+                    self.G.remove_edge(u, v)
+                    print(f"Removed edge {u} -> {v}")
+            except nx.NetworkXNoCycle:
+                break
+                    
+            #return pd.DataFrame(data=[], columns=['hit_id', 'track_id']) 
         trkx = self.get_tracks()
         for trk in trkx:
             trk.sort(key = lambda x: R[x])
