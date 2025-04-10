@@ -139,13 +139,13 @@ def plot_tracks_2D(hits: pd.DataFrame , edge_cut:float = 0.334, save: str = './'
 if __name__ == '__main__':
     
     if len(sys.argv) != 2:
-        raise RuntimeError('usage: python3 ./tracks/plot_2D.py <configuration file>')
+        raise RuntimeError('usage: python3 ./tracks/plot_eff_pur_eff.py <configuration file>')
     
     
     edge_cut =  0.333
     path = Path(f'{sys.argv[1]}')
     base_dir = Path(f'{os.path.basename(sys.argv[1])}')
-    save = Path('../metrics')
+    save = Path('metrics')
    
     save.mkdir(parents=True, exist_ok=True)
 
