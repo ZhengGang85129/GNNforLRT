@@ -83,16 +83,17 @@ plot_configs = {
 }
 
 particle_filters = {
-    'displaced': lambda particles: (
+    'displaced': lambda particles: ((
         (particles['parent_ptype'] == 50) |
         (particles['parent_ptype'] == -50)
-    ),
+    )),
     'prompt': lambda particles: (
-        (particles['parent_ptype'] == 24) |
-        (particles['parent_ptype'] == -24)
+        ((particles['parent_ptype'] == 24) |
+        (particles['parent_ptype'] == -24)) & ((particles['parent_ptype'] == 13) |
+        (particles['parent_ptype'] == -13))
     ),
     'HSS': lambda particles: (
-        (particles['parent_ptype'] == 36)
+        ((particles['parent_ptype'] == 36)) 
     ),
     'all': lambda particles: (
         (particles['parent_ptype'] == 24) |
