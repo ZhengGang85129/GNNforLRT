@@ -17,6 +17,6 @@ nvidia-smi
 which bash
 source /global/homes/z/zhenggan/miniconda3/etc/profile.d/conda.sh
 conda activate exatrkx-gpu
-traintrack ./configs/pipeline-FlatPU_best-smeared.yaml --inference > output-FlatPU.log 2>&1 
+traintrack configs/inference_test/pipeline-BIN00.yaml --inference > output-FlatPU.log 2>&1 
 
 
