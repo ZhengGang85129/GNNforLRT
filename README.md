@@ -55,7 +55,7 @@ pip install "ruamel.yaml<0.18.0"
 1. [Training Instruction](https://quiet-magnesium-057.notion.site/Pipeline-to-install-TrackML-and-training-the-model-for-GNNforLRT-project-c5de6509e5ef409bb968a9d5f3969306?pvs=4) - How to prepare configuration file for training pipeline and launch training.
 2. [Training Curve Monitor](https://quiet-magnesium-057.notion.site/Pipeline-to-plot-the-training-validation-curve-for-each-stage-650886b4a9bf46fbb30ce536a966c347). - How to monitor the loss curve during training.
 3. [Dataset Visualization](https://quiet-magnesium-057.notion.site/Event-Display-29d2bb171d3c47eba6d3ab1a68cfe06a?pvs=4) - Hits distribution, Geometric view vs Efficiency & Purity.
-5. [Efficiency Plot](https://quiet-magnesium-057.notion.site/Evaluate-the-model-11f67c6786f68022abebd33843e4608b?pvs=4)
+5. [Efficiency Plot](https://quiet-magnesium-057.notion.site/Evaluate-the-model-11f67c6786f68022abebd33843e4608b?pvs=4) - How to plot the reconstruction efficiency over collider observables.
 6. [Model Inference](https://quiet-magnesium-057.notion.site/Inference-11f67c6786f6803f93c1d256dc30bee1?pvs=4)
 
 
