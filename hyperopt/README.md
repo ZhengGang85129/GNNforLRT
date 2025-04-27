@@ -10,12 +10,19 @@ This folder contains scripts and configuration files for manually tuning hyperpa
 ## Structure
 |File| Description| 
 |:---|:-----------|
-|train.py| A main scheduler script for preparing configuration files for assigned stages.|
-|train-Embedding_template.yaml| A template configuration file for embedding stage.|
-|train-Filter_template.yaml| A template configuration file for filter stage.|
-|train-GNN_template.yaml| A template configuration file for gnn stage.|
-|config_hyperparam.py| A helper for preparing specific stage configuration file.|
-|prepare_train_config.py| A helper for organizing the training pipeline.|
-|random_search.py| A helper for randomly sampling the hyperparameter values|
-|run_model.py| |
-|to_table.py| A tool to aggregate the results of optimization searching.|
+|scheduler_train.py| A main scheduler script for preparing and dispatching configuration files for different stages.|
+|train-Embedding_template.yaml| Template configuration file for the embedding stage.|
+|train-Filter_template.yaml| Template configuration file for the filter stage.|
+|train-GNN_template.yaml| Template configuration file for the gnn stage.|
+|config_generate_hyperparam.py| Helper script for preparing customized configuration files for a specific stage.|
+|config_prepare_pipeline.py| Utility script for organizing the overall training pipeline configurations.|
+|search_random_hyperparam.py| Tool for randomly sampling of hyperparameter values during optimization. This will produces the configuration files|
+|runner_submit_job.py| Helper for preparing the slurm scripts.|
+|report_aggregate_results.py| A tool to aggregate and summarize hyperparameter optimization results into tables.|
+
+## Usage
+
+```bash
+python3 ./hyperopt/random_search.py
+sh ./slurm_script/hyperopt_grid_search.sh 
+```
