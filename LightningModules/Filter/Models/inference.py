@@ -5,7 +5,7 @@ import logging
 import tracemalloc
 import gc
 from memory_profiler import profile
-
+import pandas as pd
 from pytorch_lightning.callbacks import Callback
 import torch.nn.functional as F
 import sklearn.metrics
@@ -132,13 +132,14 @@ class FilterTelemetry(Callback):
         self.preds = torch.cat(self.preds)
         
         score_cuts = np.arange(0., 1., 0.05)
-        
         positives = np.array([(self.preds > score_cut).sum() for score_cut in score_cuts])
         true_positives = np.array([((self.preds > score_cut) & self.truth).sum() for score_cut in score_cuts])
-                
+        
         eff = true_positives / self.truth.sum()
         pur = true_positives / positives
         
+        pd.DataFrame({'eff' : eff, 'pur' : pur, 'score_cuts' : score_cuts}).to_csv("eff_pur.csv")
+         
         return eff, pur, score_cuts
         
 
@@ -257,6 +258,7 @@ class FilterBuilder(Callback):
         )  # Does this work??
 
         cut_list = []
+        score_list = []
         for j in range(pl_module.hparams["n_chunks"]):
             subset_ind = torch.chunk(torch.arange(batch.edge_index.shape[1]), pl_module.hparams["n_chunks"])[
                 j
@@ -272,9 +274,9 @@ class FilterBuilder(Callback):
             )
             cut = torch.sigmoid(output) > pl_module.hparams["filter_cut"]
             cut_list.append(cut)
-
+            score_list.append(torch.sigmoid(output)[cut])
         cut_list = torch.cat(cut_list)
-
+        score_list = torch.cat(score_list) 
         if "pid" not in pl_module.hparams["regime"]:
             batch.y = batch.y[cut_list]
             
@@ -283,7 +285,18 @@ class FilterBuilder(Callback):
         batch.edge_index = batch.edge_index[:, cut_list]
         if "weighting" in pl_module.hparams["regime"]:
             batch.weights = batch.weights[cut_list]
-            
+        
+        truth = (
+            # edge_index: the list of the indices of the two nodes
+            # pid[edge_index[0]]: the list of pid of the first node (a[0, 2, 1, 1, 2] -> [a[0], a[2], a[1], .....])
+            # this line actually return [1, 1, 0, 1, 0, 0, 1, 1, ...], a boolean list of whether the first node and the second node are the same
+            (batch.pid[batch.edge_index[0]] == batch.pid[batch.edge_index[1]]).float()
+            if "pid" in pl_module.hparams["regime"]
+            else batch.y
+        )
+        
+        batch['score'] = score_list 
+        batch['truth'] = truth
         self.save_downstream(batch, pl_module, datatype)
         
 
