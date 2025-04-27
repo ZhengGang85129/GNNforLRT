@@ -23,6 +23,6 @@ This folder contains scripts and configuration files for manually tuning hyperpa
 ## Usage
 
 ```bash
-python3 ./hyperopt/random_search.py
+python3 ./hyperopt/search_random_hyperparam.py
 sh ./slurm_script/hyperopt_grid_search.sh 
 ```
