@@ -1,4 +1,4 @@
-# GNNforLRT
+# Particle Trajectory Reconstruction with Graph Neural Networks (GNN for LRT)
 ## Overview
 The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, with high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)- based pipeline, Exatrkx, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
 This project demonstrates how GNNs can effectively capture complex spatial dependencies and improve upon traditional track reconstruction methods.
@@ -61,8 +61,8 @@ pip install "ruamel.yaml<0.18.0"
 
 
 ## Tools and Libraries
-* Python
-* PyTorch Lightning
+* Python >= 3.9
+* PyTorch Lightning == 1.9.2
 * scikit-learn
 * NetworkX
 * Matplotlib
