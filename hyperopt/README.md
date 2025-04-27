@@ -10,10 +10,10 @@ This folder contains scripts and configuration files for manually tuning hyperpa
 ## Structure
 |File| Description| 
 |:---|:-----------|
-|train.py||
-|train-Embedding_template.yaml||
-|train-Filter_template.yaml||
-|train-GNN_template.yaml||
+|train.py| A main scheduler script for preparing configuration files for assigned stages.|
+|train-Embedding_template.yaml| A template configuration file for embedding stage.|
+|train-Filter_template.yaml| A template configuration file for filter stage.|
+|train-GNN_template.yaml| A template configuration file for gnn stage.|
 |config_hyperparam.py||
 |prepare_train_config.py||
 |random_search.py||
