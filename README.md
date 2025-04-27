@@ -70,7 +70,10 @@ pip install "ruamel.yaml<0.18.0"
 
 ## Results
 
-
+| Dataset       | Reconstruction Efficiency (PU = 200) |
+|:--------------|:--------------------------|
+| TTBar dileptonic muon | 90.3 %            |
+| Heavy Neutral Lepton decays | 75.1 %      |
 
 
 ## Future Work
