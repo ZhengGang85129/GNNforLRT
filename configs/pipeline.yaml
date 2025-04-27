@@ -1,0 +1,19 @@
+stage_list:
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-Embed.yaml
+  name: LayerlessEmbedding
+  resume_id: null
+  set: Embedding
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-Filter.yaml
+  name: VanillaFilter
+  resume_id: null
+  set: Filter
+- batch_config: configs/batch_gpu_default.yaml
+  batch_setup: true
+  config: train-GNN.yaml
+  name: ResAGNN
+  resume_id: null
+  set: GNN
