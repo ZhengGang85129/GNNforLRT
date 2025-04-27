@@ -14,8 +14,8 @@ This folder contains scripts and configuration files for manually tuning hyperpa
 |train-Embedding_template.yaml| A template configuration file for embedding stage.|
 |train-Filter_template.yaml| A template configuration file for filter stage.|
 |train-GNN_template.yaml| A template configuration file for gnn stage.|
-|config_hyperparam.py||
-|prepare_train_config.py||
-|random_search.py||
-|run_model.py||
-|to_table.py||
+|config_hyperparam.py| A helper for preparing specific stage configuration file.|
+|prepare_train_config.py| A helper for organizing the training pipeline.|
+|random_search.py| A helper for randomly sampling the hyperparameter values|
+|run_model.py| |
+|to_table.py| A tool to aggregate the results of optimization searching.|
