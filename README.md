@@ -1,10 +1,10 @@
-# Particle Trajectory Reconstruction with Graph Neural Networks (GNN for LRT)
+# Particle Trajectory Reconstruction with Graph Neural Networks
 ## Overview
-The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a significant challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, due to high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)- based pipeline, Exatrkx, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
+The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a significant challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, due to high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)-based pipeline, Exa.TrkX, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
 This project demonstrates how GNNs can effectively capture complex spatial dependencies and improve upon traditional track reconstruction methods.
 
 ## Motivation
-In HEP experiments, accurately reconstructing particle tracks from few ten-thousands of noisy hits is a fundamental yet challenging task. Traditional track reconstruction algorithms often struggle with noise and combinatorial complexity. Leveraging GNN provides: robustness to noise, scalability to large datasets, and superior accuracy compared to classical algorithms.
+In HEP experiments, accurately reconstructing particle tracks from a few tens of thousands of noisy hits is a fundamental yet challenging task. Traditional track reconstruction algorithms often struggle with noise and combinatorial complexity. Leveraging GNN provides robustness to noise, scalability to large datasets, and superior accuracy compared to classical algorithms.
 
 ## Methods
 * Graph Neural Network: Implemented using PyTorch Lightning, with customized message-passing layers to fit the physics constraints.
