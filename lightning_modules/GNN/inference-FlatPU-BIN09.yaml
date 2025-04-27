@@ -1,0 +1,43 @@
+TAG: Inference-FlatPU-09
+batch_size: 1
+callbacks:
+- GNNBuilder
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/GNN.ckpt
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 0
+  - 0
+  - 500
+delta_eta: 1.2
+devices: 1
+edge_cut: 0.334
+emb_channels: 0
+endcaps: true
+factor: 0.3
+hidden: 1024
+hidden_activation: ReLU
+in_channels: 3
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/inference_time/Filter_BIN_09
+layernorm: true
+lr: 0.001
+max_epochs: 20
+n_graph_iters: 4
+nb_edge_layer: 4
+nb_node_layer: 2
+noise: true
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/inference_time/GNN_BIN_09
+overwrite: true
+patience: 10
+project: LRT_GNN
+pt_background_min: 0.0
+pt_signal_min: 0.0
+regime:
+- []
+slack_alert: false
+stage_dir: ./
+true_edges: layerless_true_edges
+warmup: 200
+weight: 2.47

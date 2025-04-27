@@ -1,14 +1,14 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/trackPt1GeV-smeared/HNL_output_PU200_NPZ-testOnly-2
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Embed_inference
+input_dir: 
+output_dir: 
 stage_dir: ./
 project: LRT_Embedding
 overwrite: true
 pt_signal_min: 0
 pt_background_min: 0
 train_split:
-- - 0 #1500
-  - 0 #250
-  - 1000 #1000
+- - 1500 
+  - 250 
+  - 1000
 true_edges: layerless_true_edges
 noise: true
 in_channels: 3
@@ -37,7 +37,7 @@ regime:
 - - rp
   - hnm
 max_epochs: 30
-checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forAll/Embedding_optimized_onHNL.ckpt
+checkpoint_path: 
 callbacks:
 - EmbeddingBuilder
-TAG: SampleHNLFlatPU_ModelMIXPU200_inference
+TAG: DEFAULT 

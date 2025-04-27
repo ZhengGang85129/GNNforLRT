@@ -1,7 +1,7 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHSSPU200_ModelHNLPU200-Filter_inference
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Filter-0p7
 output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHSSPU200_ModelHNLPU200-GNN_inference
 project: LRT_GNN
-edge_cut: 0.5
+edge_cut: 0.7
 overwrite: true
 pt_background_min: 0.0
 pt_signal_min: 0.0
@@ -38,6 +38,6 @@ devices: 1
 slack_alert: false
 checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forHNL/GNN0.ckpt
 callbacks:
-- GNNBuilder
+- GNNEffPur
 stage_dir: ./
 TAG: SampleHSSPU200_ModelHNLPU200_inference

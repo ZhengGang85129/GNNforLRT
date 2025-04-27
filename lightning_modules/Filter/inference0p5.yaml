@@ -1,8 +1,8 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Embed_inference
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Filter_inference
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Embed
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Filter-0p5
 stage_dir: ./
 project: LRT_Filter
-filter_cut: 0.01
+filter_cut: 0.5
 overwrite: true
 pt_background_min: 0.0
 pt_signal_min: 0.0

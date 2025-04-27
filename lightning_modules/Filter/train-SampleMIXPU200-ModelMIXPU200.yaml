@@ -1,5 +1,5 @@
-input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Embed_inference
-output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelMIXPU200-Filter_inference
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLFlatPU_ModelMIXPU200-Embed_inference-2
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLFlatPU_ModelMIXPU200-Filter_inference-2
 stage_dir: ./
 project: LRT_Filter
 filter_cut: 0.01

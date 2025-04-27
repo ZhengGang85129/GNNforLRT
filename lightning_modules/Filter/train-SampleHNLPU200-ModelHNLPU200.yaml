@@ -1,0 +1,42 @@
+input_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Embed
+output_dir: /global/cfs/cdirs/m3443/data/GNNforLRT/results/SampleHNLPU200_ModelHNLPU200-Filter
+stage_dir: ./
+project: LRT_Filter
+filter_cut: 0.01
+overwrite: true
+pt_background_min: 0.0
+pt_signal_min: 0.0
+datatype_names:
+- - train
+  - val
+  - test
+datatype_split:
+- - 1500 #1500
+  - 250 #250
+  - 1000 #1000
+endcaps: true
+true_edges: layerless_true_edges
+noise: true
+in_channels: 3
+hidden: 512
+nb_layer: 8
+emb_channels: 0
+batch_size: 1
+layernorm: true
+batchnorm: false
+n_chunks: 4
+edges_per_batch: 300000
+ratio: 2
+weight: 1
+warmup: 800
+lr: 0.001
+devices: 1
+factor: 0.4
+patience: 5
+regime:
+- []
+max_epochs: 25
+callbacks:
+- FilterBuilder
+checkpoint_path: /global/cfs/cdirs/m3443/data/GNNforLRT/bestckpt/forHNL/Filter0.ckpt
+TAG: SampleHSSPU200_ModelHNLPU200_inference
