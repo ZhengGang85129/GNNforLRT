@@ -11,18 +11,22 @@ def reconstruct_tracks(
     hits: np.array,
     edges: np.array,
     score: np.array,
-    edge_filter=None
+    edge_filter = None
 ):
     """
     Reconstruct tracks.
-
-    :param algorithm: Reconstruction algorithm.
-    :param hits: 1xN array, hit ID.
-    :param edges: 2xN array, first hit index, second hit index in hits.
-    :param score: 1xN array, score for each edge.
-    :param edge_filter: Filter apply to edges.
-
-    :return:
+    
+    Args:
+        algorithm: Reconstruction algorithm.
+        hits: Array of hit id. Expected shape (n_hits, 1).
+        edges(np.array): Array of candidate edges between hits. Each row contains (source, target).
+        score(np.array): Array of edge scores corresponding to each edge.
+    Return:
+        pd.DataFrame: A DataFrame containing reconstructed tracks with columns:
+        - 'hit_id': ID of hit
+        - 'track_id': Assigned track id.
+    
+    
     """
     if edge_filter is not None:
         edges = edges[edge_filter]
