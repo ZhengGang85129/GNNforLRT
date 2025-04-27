@@ -27,7 +27,7 @@ def main():
     global args, pipeline_task, pipeline_template
     args = parser()
     pipeline_task = f'configs/pipeline-{args.sample}_{args.task_name}.yaml'  
-    pipeline_template = f'configs/pipeline-{args.sample}_template.yaml'
+    pipeline_template = f'configs/pipeline.yaml'
     prepare_pipeline()
     write_script()
 
@@ -37,7 +37,7 @@ def prepare_pipeline() -> None:
     
     #print(pipeline_example_file, pipeline_sample_file)
     
-    command_for_hyperconfig = 'python3 ./HyperOptim/config_hyperparam.py' 
+    command_for_hyperconfig = 'python3 hyperopt/config_hyperparam.py' 
     
     for stage in ['embedding', 'filter', 'gnn']:
         if getattr(args, stage) is not None:

@@ -28,7 +28,7 @@ def main() -> None:
     #print(pipeline_example_file, pipeline_sample_file)
     prepare_pipeline() 
     
-    command_for_hyperconfig = 'python3 ./config_hyperparam.py' 
+    command_for_hyperconfig = 'python3 ./config_generate_hyperparam.py' 
     
     for stage in ['embedding', 'filter', 'gnn']:
         if getattr(args, stage) is not None:

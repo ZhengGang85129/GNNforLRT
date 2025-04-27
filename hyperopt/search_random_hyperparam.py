@@ -9,7 +9,7 @@ def setup_yaml():
     yaml.add_representer(OrderedDict, represent_dictionary_order)
 
 def produce_hyperparam(trials: int = 10, InputDir: str = None, stage: str = 'GNN', sample_type: str = 'PU200') -> None:
-    with open(f'LightningModules/{stage}/train-{stage}_template.yaml', 'r') as file:
+    with open(f'LightningModules/{stage}/train-{stage}.yaml', 'r') as file:
         cfg = yaml.safe_load(file)
     
     cfg_to_be_updated = OrderedDict(cfg)

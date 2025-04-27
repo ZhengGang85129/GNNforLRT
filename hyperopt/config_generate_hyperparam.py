@@ -44,7 +44,7 @@ def setup_yaml():
 def Config_Write(stage: str, config_overwrite: Dict = None) -> None:
     
     
-    with open(f'./LightningModules/{stage}/train-{stage}_template.yaml', 'r') as file:
+    with open(f'./LightningModules/{stage}/train-{stage}.yaml', 'r') as file:
     #with open('test-123.yaml', 'r')  as file:
         default_config = yaml.safe_load(file)
     
