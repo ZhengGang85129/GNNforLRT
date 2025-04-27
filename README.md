@@ -76,6 +76,12 @@ pip install "ruamel.yaml<0.18.0"
 | Heavy Neutral Lepton decays | 75.1 %      |
 
 
+## Acknowledgement
+This project builds upon the [Tracking-ML-Exa.TrkX](https://github.com/HSF-reco-and-software-triggers/Tracking-ML-Exa.TrkX) framework developed by the HEP software Foundation(HSF). We thank the original authors for providing an excellent foundation for particle tracking research.
+
+If you use this codebase, please cite both this work and the following:
+> X. Ju et al., "Performance of a Geometric Deep Learning Pipeline for HL-LHC Particle Tracking, " Eur. Phys. J. C, 2021. [arXiv:2103.06995](https://arxiv.org/pdf/2103.06995)
+
 ## Future Work
 * Apply on real collision data
 * Explore advanced GNN architecture, like DGCNN, transformer-based model.
@@ -85,10 +91,6 @@ pip install "ruamel.yaml<0.18.0"
 For any questions or collaboration inquiries, please contact:
 Zheng-Gang Chen [zheng-gang.chen@cern.ch](zheng-gang.chen@cern.ch) and Yuan-Tang Chou [yuan-tang.chou@cern.ch](yuan-tang.chou@cern.ch)
 
-## Citation
-
-If you use this codebase, please cite both this work and the following:
-> X. Ju et al., "Performance of a Geometric Deep Learning Pipeline for HL-LHC Particle Tracking, " Eur. Phys. J. C, 2021. [arXiv:2103.06995](https://arxiv.org/pdf/2103.06995)
 
 ## Paper (In Progress)
 This project is part of an ongoing research work. A related paper is currently under preparation and will be made available soon.
