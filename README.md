@@ -1,6 +1,6 @@
 # Particle Trajectory Reconstruction with Graph Neural Networks (GNN for LRT)
 ## Overview
-The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, with high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)- based pipeline, Exatrkx, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
+The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a significant challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, due to high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)- based pipeline, Exatrkx, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
 This project demonstrates how GNNs can effectively capture complex spatial dependencies and improve upon traditional track reconstruction methods.
 
 ## Motivation
@@ -67,6 +67,7 @@ pip install "ruamel.yaml<0.18.0"
 * Matplotlib
 * Numpy
 * Pandas
+* CUDA Toolkit 12.1 (for GPU acceleration)
 
 ## Results
 
@@ -88,8 +89,16 @@ If you use this codebase, please cite both this work and the following:
 * Implement end-to-end track reconstruction pipelines
 
 ## Contact
-For any questions or collaboration inquiries, please contact:
-Zheng-Gang Chen [zheng-gang.chen@cern.ch](zheng-gang.chen@cern.ch) and Yuan-Tang Chou [yuan-tang.chou@cern.ch](yuan-tang.chou@cern.ch)
+For any questions, feedback, or collaboration inquiries, please feel free to contact:
+- **Zheng-Gang Chen**
+   - [zheng-gang.chen@cern.ch](mailto:zheng-gang.chen@cern.ch) 
+   - [GitHub](https//github.com/ZhengGang85129)
+- **Yuan-Tang Chou**
+   - [yuan-tang.chou@cern.ch](mailto:yuan-tang.chou@cern.ch)
+- **Wei Fang**
+   - [daniel.bb0321@gmail.com](mailto:daniel.bb0321@gmail.com) 
+- **You-Ying Li**
+   - [you-ying.li@cern.ch](mailto:you-ying.li@cern.ch)
 
 
 ## Paper (In Progress)
