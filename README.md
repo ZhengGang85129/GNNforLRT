@@ -83,7 +83,12 @@ pip install "ruamel.yaml<0.18.0"
 
 ## Contact
 For any questions or collaboration inquiries, please contact:
-Zheng-Gang Chen
+Zheng-Gang Chen [zheng-gang.chen@cern.ch](zheng-gang.chen@cern.ch) and Yuan-Tang Chou [yuan-tang.chou@cern.ch](yuan-tang.chou@cern.ch)
+
+## Citation
+
+If you use this codebase, please cite both this work and the following:
+> X. Ju et al., "Performance of a Geometric Deep Learning Pipeline for HL-LHC Particle Tracking, " Eur. Phys. J. C, 2021. [arXiv:2103.06995](https://arxiv.org/pdf/2103.06995)
 
 ## Paper (In Progress)
 This project is part of an ongoing research work. A related paper is currently under preparation and will be made available soon.
