@@ -14,3 +14,4 @@ configs/pipeline-PU200_Embedding-*.yaml
 LightningModules/Embedding/optim-PU200-Embed-*.yaml
 LightningModules/Embedding/optim_Embedding-*.yaml
 tracks/DBSCAN_config/TTBar_PU200.yaml
+lightning_modules/*/*.yaml
