@@ -7,7 +7,7 @@ stage_list:
   set: Embedding
 - batch_config: configs/batch_gpu_default.yaml
   batch_setup: true
-  config: train-SampleHNLFlat-ModelMIXPU200.yaml
+  config: train-SampleMIXPU200-ModelMIXPU200.yaml
   name: VanillaFilter
   resume_id: null
   set: Filter
