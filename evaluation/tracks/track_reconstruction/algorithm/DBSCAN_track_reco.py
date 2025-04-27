@@ -11,7 +11,15 @@ from .track_reco_algorithm import TrackRecoAlgorithm
 
 
 class DBSCANTrackReco(TrackRecoAlgorithm):
-    def __init__(self, epsilon=0.25, min_samples=2):
+    '''
+    Track Reconstruction algorithm based on DBSCAN clustering.
+    
+    Args:
+        epsilon(float, optional): The maximum distance between two samples for them to be considered as in the same neighborhood. Defaults: 0.25.
+        min_samples (int, optional): The number of samples in a neighborhood for a point to be considered as core point. Defaults to 2.
+    '''
+    
+    def __init__(self, epsilon: float =0.25, min_samples: int = 2):
         self.epsilon = epsilon
         self.min_samples = min_samples
 
@@ -25,7 +33,7 @@ class DBSCANTrackReco(TrackRecoAlgorithm):
         Reconstruct tracks.
         
         Args:
-            hits(np.array): Array of hit information. Expected shape (n_hits, n_features). Columns: (hit_id, R)
+            hits(np.array): Array of hit id. Expected shape (n_hits,1).
             edges(np.array): Array of candidate edges between hits. Each row contains (source, target).
             score(np.array): Array of edge scores corresponding to each edge.
         Return:
