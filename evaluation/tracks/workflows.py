@@ -73,7 +73,10 @@ def reconstruct_and_match_tracks(
         }
     )
     """
-
+    #print(constructed_tracks)
+    #ghost_rate = len(constructed_tracks['hit_id'][constructed_tracks['track_id'] == -1])/len(constructed_tracks['track_id'])
+    mean_track_length = constructed_tracks['track_id'].value_counts().mean()
+    #print(ghost_rate, mean_track_length)
     # ITK dataset requirement.
     """
     particle_filter = (
@@ -84,7 +87,7 @@ def reconstruct_and_match_tracks(
     """
 
     # Match track to truth label.
-    n_true_tracks, n_reco_tracks, n_matched_reco_tracks, particles = match_tracks(
+    n_true_tracks, n_reco_tracks, n_matched_reco_tracks, particles, ghost_rate, mean_track_length, matched_track = match_tracks(
         truth=data['hits'],
         reconstructed=constructed_tracks,
         particles=particles,
@@ -97,12 +100,16 @@ def reconstruct_and_match_tracks(
 
     if statistics is True:
         return particles, {
-            'n_true': n_true_tracks,
-            'n_reco': n_reco_tracks,
-            'n_match': n_matched_reco_tracks
+            'hits': data['hits'],
+            'constructed_tracks': constructed_tracks,
+            'edges': data['edges'],
+            'matched_track': matched_track
         }
     else:
-        return particles
+        return particles, {
+            'ghost_rate': ghost_rate,
+            'mean_track_length': mean_track_length
+        }
 
 
 def reconstruct_and_match_tracks_with_reader(reader: DataReader):
