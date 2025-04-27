@@ -9,7 +9,7 @@ This folder provides the configuration files for preparing pipeline, gpu/cpu man
 |batch_gpu_default.yaml|Resource requirements(GPU) and runtime settings for a job submission to a Slurm workload system|
 |batch_cpu_default.yaml| Resource requirements(CPU) and runtime settings for a job submission to a Slurm workload system|
 |pipeline.yaml|Training pipeline configuration file|
-|project_config.yaml||
+|project_config.yaml| Defines the necessary environment setup and resource locations required before running the training or evaluation pipeline.|
 
 
 
