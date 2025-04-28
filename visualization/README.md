@@ -35,6 +35,7 @@ python3 ./plt_performance.py GNN_output/XXXX # GNN_output/XXXX refer to the torc
 * GNN_output/XXXX: Torch file generated during the GNN stage containing model outputs.
 
 ### Efficiency & Precision 
+
 <img width="579" alt="image" src="https://github.com/user-attachments/assets/ba49c297-d4b5-413a-be53-778eb1cbbd31" />
 
 ```bash
@@ -68,6 +69,8 @@ python3 visualize_edge_filtering_ablation.py  # You have to adjust the configs(l
 ### Visualize Seed quality
 
 <img width="276" alt="image" src="https://github.com/user-attachments/assets/55fba4c3-eae1-42b0-8bf3-6534855ad2e6" />
+
+
 ```bash
 python3 ./visualize_seed_quality configs/XXX.yaml
 ```
