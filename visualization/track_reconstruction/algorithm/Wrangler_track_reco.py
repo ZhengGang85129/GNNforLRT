@@ -15,7 +15,7 @@ from functools import partial
 import os
 from typing import List, Any, Tuple, Optional
 
-from ..match_tracks import match_tracks, analyze_tracks
+from track_reconstruction.utils.match_tracks import match_tracks
 
 import numpy as np
 import pandas as pd

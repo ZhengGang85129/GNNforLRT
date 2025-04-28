@@ -14,7 +14,7 @@ import pandas as pd
 from ExaTrkXDataIO import DataReader
 
 from track_reconstruction.utils.reconstruct_tracks import reconstruct_tracks
-from track_reconstruction.match_tracks import match_tracks
+from track_reconstruction.utils.match_tracks import match_tracks
 from .track_reco_algorithm import TrackRecoAlgorithm
 
 
