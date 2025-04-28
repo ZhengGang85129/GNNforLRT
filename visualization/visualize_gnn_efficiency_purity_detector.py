@@ -13,13 +13,6 @@ import matplotlib.pyplot as plt
 from ExaTrkXPlotting import Plotter, PlotConfig
 from ExaTrkXPlots import tracks
 
-from track_reconstruction import reconstruct_tracks
-from track_reconstruction.algorithm import DBSCANTrackReco
-from track_matching import match_tracks
-from track_reconstruction import reconstruct_tracks
-from workflows import reconstruct_and_match_tracks
-from plot_configurations import (particle_filters, )
-
 import sys, os 
 import itertools
 
@@ -128,12 +121,6 @@ def plot_tracks_2D(hits: pd.DataFrame , edge_cut:float = 0.334, save: str = './'
     ax.set_ylim([-0.05, 1.5])
     fig.savefig("eff_pur_2D.png")
     fig.savefig("eff_pur_2D.pdf")
-    return  
-    
-    #plot_2D_pur_eff()
-    
-    #fig.savefig("test.pdf")
-    #fig.savefig("test.png")
 
   
 if __name__ == '__main__':
@@ -145,10 +132,6 @@ if __name__ == '__main__':
     edge_cut =  0.333
     path = Path(f'{sys.argv[1]}')
     base_dir = Path(f'{os.path.basename(sys.argv[1])}')
-    save = Path('metrics')
-   
-    save.mkdir(parents=True, exist_ok=True)
-
     event_ids = range(0, 10000)
     
     reader = DataReader(

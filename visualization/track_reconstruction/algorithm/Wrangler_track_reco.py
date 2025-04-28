@@ -15,7 +15,7 @@ from functools import partial
 import os
 from typing import List, Any, Tuple, Optional
 
-from tracks.track_matching import match_tracks, analyze_tracks
+from ..match_tracks import match_tracks, analyze_tracks
 
 import numpy as np
 import pandas as pd
@@ -23,7 +23,8 @@ import pandas as pd
 from torch_geometric.data import Data
 from torch_geometric.utils import to_networkx
 import torch
-from tracks.track_reconstruction.algorithm.track_reco_algorithm import TrackRecoAlgorithm 
+from .track_reco_algorithm import TrackRecoAlgorithm 
+from track_reconstruction.utils.reconstruct_tracks import reconstruct_tracks
 import networkx as nx
 import operator
  
@@ -200,35 +201,6 @@ class WranglerTrackReco(TrackRecoAlgorithm):
         results['track_id'] =  results.track_id.astype(str)
         results['seed_id'] =  results.seed_id.astype(int)
         return results
-
-    
-     
-
-
-def reconstruct_tracks(
-    algorithm: TrackRecoAlgorithm,
-    hits: np.array,
-    edges: np.array,
-    score: np.array,
-):
-    """
-    Reconstruct tracks.
-
-    :param algorithm: Reconstruction algorithm.
-    :param hits: 1xN array, hit ID.
-    :param edges: 2xN array, first hit index, second hit index in hits.
-    :param score: 1xN array, score for each edge.
-    :param edge_filter: Filter apply to edges.
-
-    :return:
-    """
-
-    tracks = algorithm.reconstruct(
-        hits, edges, score
-    )
-
-    return tracks
-
 
 def reconstruct_and_match_tracks(
     data:pd.DataFrame,

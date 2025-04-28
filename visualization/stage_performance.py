@@ -34,5 +34,5 @@ def main(data):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        raise ValueError()
+        raise ValueError("usage: python3 ./stage_performance.py XXX.yaml")
     main(sys.argv[1])   

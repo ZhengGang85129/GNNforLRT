@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-
-from .algorithm import TrackRecoAlgorithm
+from track_reconstruction.algorithm.track_reco_algorithm import TrackRecoAlgorithm
 
 
 def reconstruct_tracks(

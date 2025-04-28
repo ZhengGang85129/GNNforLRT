@@ -17,3 +17,4 @@ tracks/DBSCAN_config/TTBar_PU200.yaml
 lightning_modules/*/*.yaml
 configs/pipeline*
 configs/*
+visualization_old

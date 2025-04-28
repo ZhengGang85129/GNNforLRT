@@ -8,8 +8,10 @@ from ExaTrkXDataIO import DataReader
 
 import matplotlib.pyplot as plt
 
-from workflows import reconstruct_and_match_tracks as DBSCAN
-from tracks.track_reconstruction.algorithm.Wrangler import reconstruct_and_match_tracks_visualization as Wrangler
+
+from track_reconstruction.algorithm.Wrangler_track_reco import reconstruct_and_match_tracks as Wrangler
+
+from track_reconstruction.algorithm.DBSCAN_track_reco import reconstruct_and_match_tracks as DBSCAN
 
 from plot_configurations import (
     particle_filters,

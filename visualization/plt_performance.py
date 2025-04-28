@@ -4,12 +4,7 @@ import numpy as np
 import torch
 from datetime import datetime
 from matplotlib import pyplot as plt
-
-# Plotter.
 from ExaTrkXPlotting import Plotter, PlotConfig
-
-# Include performance plots.
-import ExaTrkXPlots.performance
 import sys,os
 if __name__ == '__main__':
     fig, ax = plt.subplots(2, 2, figsize=(8, 8), tight_layout=True)
@@ -63,4 +58,4 @@ if __name__ == '__main__':
             'truth': truth,
             'score': score
         }
-    ).plot(save=f"metrics/TTbar_noPU_performance_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf")
+    ).plot(save=f"performance_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf")

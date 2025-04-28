@@ -1,7 +1,8 @@
 import os
-from tracks.track_reconstruction.algorithm.Wrangler import reconstruct_and_match_tracks_visualization as Wrangler
+from track_reconstruction.algorithm.Wrangler_track_reco import reconstruct_and_match_tracks as Wrangler
+
+from track_reconstruction.algorithm.DBSCAN_track_reco import reconstruct_and_match_tracks as DBSCAN
 from scipy.spatial import cKDTree
-from tracks.workflows import reconstruct_and_match_tracks as DBSCAN
 import multiprocessing
 from pathlib import Path
 from functools import partial
@@ -9,7 +10,7 @@ import numpy as np
 import pandas as pd
 from ExaTrkXDataIO import DataReader
 import time
-from tracks.plot_configurations import (
+from plot_configurations import (
     particle_filters,
 )
 import sys
@@ -17,12 +18,21 @@ from typing import List, Tuple, Union
 import matplotlib.pyplot as plt
 import sys
 import torch
-algorithm = sys.argv[1]
 import matplotlib.pyplot as plt
 import random
-colors = plt.cm.tab10.colors  # 這會給你一個長度為 10 的 tuple list
+
+
+if len(sys.argv) != 4:
+    raise ValueError("usage: python3 visualize_reconstructed_tracks.py <algorithm: DBSCAB orWrangler> <configs file> <lepton type: displaced/prompt/all/HSS>")
+
+algorithm = sys.argv[1]
+configs = sys.argv[2] 
+lepton_type = sys.argv[3] #displaced 
+
+
+colors = plt.cm.tab10.colors 
 colors = list(colors)  
-random.shuffle(colors)  # 隨機打亂顏色順序
+random.shuffle(colors)
 def aggregate_results(results: List[Union[pd.DataFrame, float]]) -> Tuple[pd.DataFrame, float, float]:
     
     dataframes = []
@@ -45,8 +55,6 @@ def aggregate_results(results: List[Union[pd.DataFrame, float]]) -> Tuple[pd.Dat
     matched_tracks = pd.concat(matched_tracks, ignore_index = True)
     return dataframes, hits, constructed_tracks, edges, matched_tracks 
 
-lepton_type = 'displaced'
-configs = Path('./tracks/DBSCAN_config/HNL_PU200-ModelHNL_PU200.yaml') 
 base_dir = Path(os.path.basename(configs))
 
 
@@ -85,7 +93,6 @@ true_hits_labeled = False
 show_score = 0.5
 track_edges_color = ['blue', 'green', 'orange', 'purple', 'brown', 'pink']
 n_tracks = 0
-'''
 for _, particle in particles.iterrows():
     if count == 1:
         count += 1
@@ -124,11 +131,8 @@ for _, particle in particles.iterrows():
         
     plt.scatter(z_hits_p, r_hits_p, s = 80, marker = '*', label = 'truth[signal]' if not true_hits_labeled else '')
     true_hits_labeled = True
-    break 
-    
 
     count += 1     
-'''
 plt.legend(loc = 'best')
 plt.title(f'Track Visualization [{algorithm}]')
 plt.xlabel('z [m]')

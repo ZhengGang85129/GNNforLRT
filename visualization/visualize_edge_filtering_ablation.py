@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 from ExaTrkXDataIO import DataReader
-from tracks.plot_configurations import (
+from plot_configurations import (
     particle_filters,
 )
 import matplotlib.pyplot as plt
@@ -9,7 +9,9 @@ import sys
 import matplotlib.pyplot as plt
 import multiprocessing
 import os
-configs = './tracks/DBSCAN_config//hits_config.yaml'
+
+
+configs = './hits_config.yaml'
 base_dir = Path(os.path.basename(configs))
 with multiprocessing.Pool(processes = 8) as pool:
     reader = DataReader(
