@@ -5,6 +5,7 @@ This folder provides tools for visualizing dataset distributions and model perfo
 
 ## Usage
 ### Stage-wise performance
+<img width="615" alt="image" src="https://github.com/user-attachments/assets/1344082f-bc95-4a77-9e9d-b5abd9c9f6e7" />
 
 Visualize efficiency and purity for each training stage:
 
