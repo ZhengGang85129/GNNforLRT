@@ -5,7 +5,8 @@ This folder provides tools for visualizing dataset distributions and model perfo
 
 |File|Description|
 |:---|:----------|
-|reconstruct_and_match_tracks.py| Provides the `reconstruct_and_match_tracks` utility function using DBSCAN for reconstructing track candidates.|
+|plt_performance|Visualize GNN evaluation metrics such as AUC and ROC curve|
+|stage_performance| Visualize efficiency and purity for each stage.|
 |visualize_gnn_efficiency_purity_detector.py| Visualizes GNN efficiency and purity over the detector's r-z profile.|
 |visualize_reconstructed_tracks.py| Visualizes reconstructed tracks and ground truth matching, annotated with edge scores.|
 |visualize_seed_quality.py|Visualizes seed quality metrics for initial track candidates. |
