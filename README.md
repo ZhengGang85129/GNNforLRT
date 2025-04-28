@@ -9,7 +9,7 @@ In HEP experiments, accurately reconstructing particle tracks from a few tens of
 ## Methods
 * Graph Neural Network: Implemented using PyTorch Lightning, with customized message-passing layers to fit the physics constraints.
 * Edge Filtering: Applied a simple classifier to reduce fake edges before final track building.
-* Clustering: Implemented a DFS-based algorithm, Wrangler, based on the filtered graph. We used DBSCAN as our baseline.
+* Clustering: Implemented a DFS-based algorithm, Wrangler, based on the filtered graph. 
 
 ## Installation
 
