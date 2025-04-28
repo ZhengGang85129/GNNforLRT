@@ -38,6 +38,8 @@ Explanation for each argument:
 
 
 ### Raw Hit Distribution
+<img width="181" alt="image" src="https://github.com/user-attachments/assets/da293127-ecda-4b8d-b068-a26fa4349471" />
+
 Visualize the spatial distribution of raw detector hits:
 ```bash
 python3 tracks/check_rawhits.py tracks/track_reco_config/XXX.yaml GNN_output/YYYY
