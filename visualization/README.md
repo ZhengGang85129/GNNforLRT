@@ -22,7 +22,8 @@ python3 ./plt_performance.py GNN_output/XXXX # GNN_output/XXXX refer to the torc
 ```
 * GNN_output/XXXX: Torch file generated during the GNN stage containing model outputs.
 
-### Efficiency & Purity 
+### Efficiency & Precision 
+<img width="579" alt="image" src="https://github.com/user-attachments/assets/ba49c297-d4b5-413a-be53-778eb1cbbd31" />
 
 ```bash
 python3 ./tracks/model_evaluation.py --config tracks/track_reco_config/XXX.yaml --output YYY --mode [extract:evaluate] --lepton [prompt:displaced] --fname ZZZ 
