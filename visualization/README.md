@@ -11,9 +11,15 @@ This folder provides tools for visualizing dataset distributions and model perfo
 |visualize_reconstructed_tracks.py| Visualizes reconstructed tracks and ground truth matching, annotated with edge scores.|
 |visualize_seed_quality.py|Visualizes seed quality metrics for initial track candidates. |
 |plot_configuration.py| Defines plotting configuration settings for visualizations.|
-|evaluate_tracking_observables.py | Plots tracking efficiency across collider observables, such as $p_T$, $\eta$, $d_0$, $z_0$, and pileup.|
+|evaluate_tracking_observables.py | Plots tracking efficiency as a function of collider observables, such as $p_T$, $\eta$, $d_0$, $z_0$, and pileup.|
 |visualize_edge_filtering_ablation.py| Visualizes true and fake edge connections before and after the edge filtering stage.|
 |analyze_raw_hit_distribution.py|This script analyzes and visualizes edge-related statistics from graph-based tracking outputs over different spatial regions of the detector.|
+
+
+⚠️ Notes:
+* These scripts are intended for local use only
+* These are **not part of core production pipeline**.
+* User should prepare their own configuration file (A template can be found in the `configs` directory).
 
 ## Usage
 ### Stage-wise performance
