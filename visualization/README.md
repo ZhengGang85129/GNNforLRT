@@ -5,8 +5,8 @@ This folder provides tools for visualizing dataset distributions and model perfo
 
 |File|Description|
 |:---|:----------|
-|plt_performance|Visualize GNN evaluation metrics such as AUC and ROC curve|
-|stage_performance| Visualize efficiency and purity for each stage.|
+|plt_performance.py|Visualize GNN evaluation metrics such as AUC and ROC curve|
+|stage_performance.py| Visualize efficiency and purity for each stage.|
 |visualize_gnn_efficiency_purity_detector.py| Visualizes GNN efficiency and purity over the detector's r-z profile.|
 |visualize_reconstructed_tracks.py| Visualizes reconstructed tracks and ground truth matching, annotated with edge scores.|
 |visualize_seed_quality.py|Visualizes seed quality metrics for initial track candidates. |
@@ -49,12 +49,12 @@ Explanation for each argument:
 - —fname: Specify a filename for both extraction and evaluation outputs. (Make sure the same name is used for both steps.)
 
 
-### Raw Hit Distribution
-<img width="181" alt="image" src="https://github.com/user-attachments/assets/da293127-ecda-4b8d-b068-a26fa4349471" />
+### Efficiency and Purity vs detector 
+<img width="262" alt="image" src="https://github.com/user-attachments/assets/bff28497-4630-43e4-b2a5-9719862a8aad" />
 
 Visualize the spatial distribution of raw detector hits:
 ```bash
-python3 tracks/check_rawhits.py tracks/track_reco_config/XXX.yaml GNN_output/YYYY
+python3 visualize_gnn_efficiency_purity_detector.py tracks/track_reco_config/XXX.yaml 
 ```
 * XXX.yaml: Configuration file describing the dataset layout.
 * YYYY: Model output file to be analyzed.
