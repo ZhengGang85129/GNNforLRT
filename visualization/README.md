@@ -14,6 +14,7 @@ python3 ./stage_performance.py ./XXX.yaml  # ./XXX.yaml refer to the yaml file g
 ```
 * XXX.yaml: YAML file generated during training, containing recorded efficiency and purity metrics for each stage.
 ### Performance (AUC/Edge score distribution)
+<img width="477" alt="image" src="https://github.com/user-attachments/assets/80b5e188-f6cc-4d75-a374-6afdd49b315c" />
 
 Visualize model evaluation metrics such as AUC and edge score distribution:
 ```bash
