@@ -1,4 +1,9 @@
 # Particle Trajectory Reconstruction with Graph Neural Networks
+
+
+![image](https://github.com/user-attachments/assets/2ce55d50-9d06-482e-a971-698df5af520f)
+
+
 ## Overview
 The High-Luminosity Large Hadron Collider(HL-LHC) and Long-Lived Particles(LLP) pose a significant challenge for particle trajectory reconstruction in high-energy physics(HEP) experiments, due to high-noise conditions and displaced vertices. This project implements a Graph Neural Network(GNN)-based pipeline, Exa.TrkX, to reconstruct particle trajectories. This method achieves a 90% reconstruction efficiency for muons from TTBar dileptonic decays and a 75% reconstruction efficiency from Heavy Neutral Lepton decays.  
 This project demonstrates how GNNs can effectively capture complex spatial dependencies and improve upon traditional track reconstruction methods.
