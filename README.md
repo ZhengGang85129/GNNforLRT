@@ -115,8 +115,17 @@ For any questions, feedback, or collaboration inquiries, please feel free to con
 
 ## Paper (In Progress)
 This project is part of an ongoing research work. A related paper is currently under preparation and will be made available soon.
-Tentative title:
-_Large Radius Tracking Reconstruction_
+
+## Citation
+
+```bibtex
+@misc{gnn2025gnnforLRT,
+  author       = {Zheng-Gang Chen}, {Fang Wei}, {Yuan-Tang Chou}, {You-Ying Li}
+  title        = {Large Radius Tracking Reconstruction},
+  year         = {2025},
+  howpublished = {\url{https://github.com/ZhengGang85129/GNNforLRT}},
+  note         = {Work in progress}
+}
 
 
    
