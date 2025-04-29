@@ -126,6 +126,4 @@ This project is part of an ongoing research work. A related paper is currently u
   howpublished = {\url{https://github.com/ZhengGang85129/GNNforLRT}},
   note         = {Work in progress}
 }
-
-
-   
+```
