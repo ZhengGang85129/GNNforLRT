@@ -1,7 +1,8 @@
 # Particle Trajectory Reconstruction with Graph Neural Networks
 
 
-![image](https://github.com/user-attachments/assets/2ce55d50-9d06-482e-a971-698df5af520f)
+![image](https://github.com/user-attachments/assets/d828b276-d511-482a-9401-5e320a496307)
+
 
 
 ## Overview
